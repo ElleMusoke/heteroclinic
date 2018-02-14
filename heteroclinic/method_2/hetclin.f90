@@ -93,11 +93,11 @@
 	  U(7)= PAR(58)
 	  U(8)= PAR(59)
 	  
-	  PAR(74)= -0.82190793226430425288953074414167
-	  PAR(75)= -0.56962035680004952098443027352914
+	  PAR(74)= (U(3)-U(7))/SQRT((U(3)-U(7))**2+(U(4)-U(8))**2)
+	  PAR(75)= (U(4)-U(8))/SQRT((U(3)-U(7))**2+(U(4)-U(8))**2)
 	  
-	  PAR(78)= -0.56962035680004952098443027352914
-	  PAR(79)= 0.82190793226430425288953074414167
+	  PAR(78)= (U(4)-U(8))/SQRT((U(3)-U(7))**2+(U(4)-U(8))**2)
+	  PAR(79)= -(U(3)-U(7))/SQRT((U(3)-U(7))**2+(U(4)-U(8))**2)
 	  
 	  PAR(80)= DOT_PRODUCT(PAR(74:75), (/ (U(3)-U(7)), (U(4)-U(8)) /)) 
 	  PAR(81)= DOT_PRODUCT( (/ (U(3)-U(7)), (U(4)-U(8)) /), PAR(78:79) )
@@ -142,7 +142,7 @@
 	  FB(16)= U1(8) - (PAR(63))
 	  	    
 	  !orthogonal vector
-	  FB(17)= DOT_PRODUCT( (/ (U1(3)-U1(7)), (U1(4)-U1(8)) /), PAR(78:79) ) - PAR(81) !PAR(81) shold become zero once both ends are in the A=4.0, B=0.5 plane
+	  FB(17)= DOT_PRODUCT( (/ (U1(3)-U1(7)), (U1(4)-U1(8)) /), PAR(78:79) ) !PAR(81) shold become zero once both ends are in the A=4.0, B=0.5 plane
 	  FB(18)= DOT_PRODUCT(PAR(74:75), (/ (U1(3)-U1(7)), (U1(4)-U1(8)) /)) - PAR(80)
 	  
 	  IF(NBC==18) RETURN
