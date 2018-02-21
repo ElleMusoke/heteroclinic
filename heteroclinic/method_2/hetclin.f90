@@ -100,7 +100,7 @@
 	  PAR(79)= -(U(3)-U(7))/SQRT((U(3)-U(7))**2+(U(4)-U(8))**2)
 	  
 	  PAR(80)= DOT_PRODUCT(PAR(74:75), (/ (U(3)-U(7)), (U(4)-U(8)) /)) 
-	  PAR(81)= DOT_PRODUCT( (/ (U(3)-U(7)), (U(4)-U(8)) /), PAR(78:79) )
+	  PAR(81)= (U(2)-U(6))
 
       END SUBROUTINE STPNT
 !---------------------------------------------------------------------- 
@@ -142,16 +142,17 @@
 	  FB(16)= U1(8) - (PAR(63))
 	  	    
 	  !orthogonal vector
-	  FB(17)= DOT_PRODUCT( (/ (U1(3)-U1(7)), (U1(4)-U1(8)) /), PAR(78:79) ) !PAR(81) shold become zero once both ends are in the A=4.0, B=0.5 plane
+	  FB(17)= DOT_PRODUCT( (/ (U1(3)-U1(7)), (U1(4)-U1(8)) /), PAR(78:79) ) 
 	  FB(18)= DOT_PRODUCT(PAR(74:75), (/ (U1(3)-U1(7)), (U1(4)-U1(8)) /)) - PAR(80)
+	  FB(19)= (U1(2)-U1(6))-PAR(81) !PAR(81) shold become zero once both ends are in the A=4.0, B=0.5 plane
 	  
-	  IF(NBC==18) RETURN
+	  IF(NBC==19) RETURN
 	  
-	  FB(19)= DOT_PRODUCT(PAR(78:79), PAR(78:79)) -1.0
+	  FB(20)= DOT_PRODUCT(PAR(78:79), PAR(78:79)) -1.0
 	  
 	  !Lin vector
-	  FB(20)= (U1(3)-U1(7))/SQRT((U1(3)-U1(7))**2+(U1(4)-U1(8))**2)-PAR(74)
-	  FB(21)= (U1(4)-U1(8))/SQRT((U1(3)-U1(7))**2+(U1(4)-U1(8))**2)-PAR(75)
+	  FB(21)= (U1(3)-U1(7))/SQRT((U1(3)-U1(7))**2+(U1(4)-U1(8))**2)-PAR(74)
+	  FB(22)= (U1(4)-U1(8))/SQRT((U1(3)-U1(7))**2+(U1(4)-U1(8))**2)-PAR(75)
 	  
 	  
       END SUBROUTINE BCND
