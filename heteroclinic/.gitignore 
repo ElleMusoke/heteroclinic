@@ -1,6 +1,3 @@
-../../.DS_Store
-../../bifurcation_diagram_pieces/
-../
 .DS_store
 moov_it_up
 moov_it_down
@@ -38,5 +35,11 @@ fort.8
 fort.9
 hetclin.exe
 hetclin.o
-manifold/
-../method_1/
+../.DS_Store
+../bifurcation_diagram_pieces/
+method_2/surf_down/
+method_2/surf_up/
+method_3/close_step/
+method_3/surf_down/
+method_3/surf_up/
+plot_methods/
