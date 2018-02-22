@@ -1,0 +1,43 @@
+unames = {1:'a_top', 2:'b_top', 3:'x_top', 4:'y_top', 5:'a_bottom', 6:'b_bottom', 7:'x_bottom', 8:'y_bottom'}
+parnames = {}
+NDIM = 8
+NBC = 20
+NINT = 0
+NPAR = 200
+JAC = 0
+NTST = 105
+NCOL = 4
+IAD = 3
+EPSL = 1e-10 
+EPSU = 1e-10 
+EPSS = 1e-10
+ITMX = 8
+NWTN = 3
+ITNW = 5
+DS = 0.00005
+DSMIN = 0.00000001 
+DSMAX = 0.05
+IADS = 1
+THL = {11: 0.0,12:0.0}
+THU = {}
+NMX = 2000000
+ILP = 0
+ISP = 0
+ISW = 1
+MXBF = 2
+IRS = 0
+IPS = 4
+NPR= 10
+IID = 3
+IPLT = 0
+UZR = {}
+UZSTOP = {}
+
+
+
+
+
+
+
+
+
