@@ -1,0 +1,15 @@
+*.m
+*.fig
+*.png
+step1
+step2
+b.*
+s.*
+d.*
+*.0
+fort.7
+fort.8 
+fort.9
+*.exe
+*.m~
+to_matlab.py
