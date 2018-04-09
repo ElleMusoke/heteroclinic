@@ -1,0 +1,86 @@
+##to run just type auto('splice.auto')
+
+
+#import numpy as np
+
+#bottom0 = r(e='hetclin', c='hetclin', ICP=[12,45,46,54,55,61,62,71,70,72,73,74,75], UZSTOP={61:0.6})
+
+#def time_and_function_values(bd):
+#    # Put the function values into a NumPy array:
+#    U_values = bd.toarray()
+#    # Put the time vector into a NumPy array:
+#    time = bd['t']
+#   # Stack them in a single array:
+#   t_and_u = np.vstack((time, U_values))
+#   return t_and_u
+
+
+	
+#p = {};
+
+
+#for i in range(1,77):
+#    p[i] = bottom0('UZ1').PAR(i);
+	
+
+
+#p[60]=1.4139; p[61]=0.6050; p[62]=1.2219; p[63]=0.7919;
+
+#p[72]=9.1929; p[73]=0.2950; p[74]=0.7919; p[75]=need_to_add_this_if_you_run_again
+
+#start_data = time_and_function_values(bottom0('UZ1'))
+	
+#bottom1 = r(start_data[:,1:300], PAR=p, ICP=[12,45,46,54,55,60,62,70,71,72,73,74,75], UZSTOP={60:6.0})
+
+
+
+##BIG DIRTY
+
+import numpy as np
+
+bottom0 = r(e='hetclin', c='hetclin', ICP=[12,45,46,54,55,61,62,71,70,72,73,74,75], UZSTOP={61:0.6})
+bottom1 = r(bottom0, ICP=[12,45,46,54,55,60,62,70,71,72,73,74,75], UZSTOP={60:6.0})
+top0 = r(bottom1, ICP=[11,45,46,54,55,70,71,61,62,72,73,74,75],UZSTOP={45:0.6}, DS='-')
+top1 = r(top0, ICP=[44,11,46,54,55,70,71,61,62,72,73,74,75],UZSTOP={44:4.0})
+top2 = r(top1, ICP=[45,11,46,54,55,70,71,61,62,72,73,74,75],UZSTOP={45:5.85055E-01}, NPR=1)
+
+def time_and_function_values(bd):
+    # Put the function values into a NumPy array:
+    U_values = bd.toarray()
+    # Put the time vector into a NumPy array:
+    time = bd['t']
+    # Stack them in a single array:
+    t_and_u = np.vstack((time, U_values))
+    return t_and_u
+
+
+	
+p = {};
+
+for i in range(1,77):
+    p[i] = top1('UZ1').PAR(i);
+	
+
+p[11]=-95.516653845441354064860206563026;
+p[12]=76.634135443713006452526315115392;
+
+p[44]=5.2392694769999996751153048535343;
+p[45]=0.59220190816999995764291497835075;
+p[46]=0.30695866500000001941828031704063;
+p[47]=0.02297816112099999863449539816429;
+
+p[60]=5.3091486546000004054235432704445;
+p[61]=0.59471537665999996136179106542841;
+p[62]=0.30274556321000001268828327738447; 
+p[63]=0.022057094366999999146550237583142;
+
+p[72]=-0.069879177600000730308238416910172;
+p[73]=-0.0025134684900000037188760870776605;
+p[74]=0.0042131017900000067299970396561548;
+p[75]=0.00092106675399999948794516058114823;
+	
+start_data = time_and_function_values(top2('UZ1'))
+
+#yes_it_moves = r(start_data[:,0:256], NTST=64, PAR=p, ICP=[61,12,60,44,45,54,55,70,71,72,73,74,75], UZSTOP={76:0.0}, DS='-')
+
+big_dirty = r(start_data[:,0:256], PAR=p, ICP=[76,12,54,55,44,46,47,70,71,60,61,62,63], NTST=64, UZSTOP={76:0.0}, DS='-')

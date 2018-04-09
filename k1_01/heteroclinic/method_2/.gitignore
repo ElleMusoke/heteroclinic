@@ -17,6 +17,7 @@ decr_70
 decr_71
 incr_70
 incr_71
+bottom1
 new_data
 orbits_unprocessed
 superclose
@@ -39,5 +40,5 @@ fort.8
 fort.9
 hetclin.exe
 hetclin.o
-manifold/
-../method_1/
+manifold
+bottom1

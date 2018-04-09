@@ -93,28 +93,19 @@
 	  U(7)= PAR(58)
 	  U(8)= PAR(59)
 	  
-	  !Lin vector
-	  PAR(73)= (U(2)-U(6))/SQRT((U(2)-U(6))**2+(U(3)-U(7))**2+(U(4)-U(8))**2)
-	  PAR(74)= (U(3)-U(7))/SQRT((U(2)-U(6))**2+(U(3)-U(7))**2+(U(4)-U(8))**2)
-	  PAR(75)= (U(4)-U(8))/SQRT((U(2)-U(6))**2+(U(3)-U(7))**2+(U(4)-U(8))**2)
 	  
-	  !first vector orthogonal to Lin vector
-	  PAR(77)= 0
-	  PAR(78)= (U(4)-U(8))/SQRT((U(3)-U(7))**2+(U(4)-U(8))**2)
-	  PAR(79)= -(U(3)-U(7))/SQRT((U(3)-U(7))**2+(U(4)-U(8))**2)
 	  
-	  !second vector orthogonal to Lin vector
+	  PAR(72)= REAL(U(1)-U(5))
+	  PAR(73)= REAL(U(2)-U(6))
+	  PAR(74)= REAL(U(3)-U(7))
+	  PAR(75)= REAL(U(4)-U(8))
 	  
-	  !PAR(80)= -0.99759982309656347609916338114999
-	  !PAR(81)= -0.04932899768241018334524738975233
-	  !PAR(82)= -0.048592622334606559719727414403678
+	  !PAR(72)= REAL(U(3)-U(7))/SQRT((U(3)-U(7))**2+(U(4)-U(8))**2)
+	  !PAR(73)= REAL(U(4)-U(8))/SQRT((U(3)-U(7))**2+(U(4)-U(8))**2)
+	  !PAR(74)= REAL(U(4)-U(8))/SQRT((U(2)-U(6))**2+(U(3)-U(7))**2+(U(4)-U(8))**2) !Lin's vector
 	  
-	  PAR(80)= (U(4)-U(8))/SQRT((U(2)-U(6))**2+(U(4)-U(8))**2)
-	  PAR(81)= 0
-	  PAR(82)= -(U(2)-U(6))/SQRT((U(2)-U(6))**2+(U(4)-U(8))**2)
-	
-	  PAR(100)= DOT_PRODUCT(PAR(73:75), (/ (U(2)-U(6)), (U(3)-U(7)), (U(4)-U(8)) /)) 
-	  
+	  !PAR(76)= SQRT((U(3)-U(7))**2+(U(4)-U(8))**2) !we're going to use this to move along Lin's vector 
+
       END SUBROUTINE STPNT
 !---------------------------------------------------------------------- 
       SUBROUTINE BCND(NDIM,PAR,ICP,NBC,U0,U1,FB,IJAC,DBC) 
@@ -154,31 +145,23 @@
 	  FB(15)= U1(7) - (PAR(62))
 	  FB(16)= U1(8) - (PAR(63))
 	  	    
-	  !making sure that the endpoints stay on the span of the Lin vector by requiring that their difference is normal to the two normal vectors
-	  FB(17)= DOT_PRODUCT( (/ (U1(2)-U1(6)), (U1(3)-U1(7)), (U1(4)-U1(8)) /), PAR(77:79) )
-	  FB(18)= DOT_PRODUCT( (/ (U1(2)-U1(6)), (U1(3)-U1(7)), (U1(4)-U1(8)) /), PAR(80:82) )
-	  
-	  !distance between endpoints to be closed in last step
-	  FB(19)= DOT_PRODUCT(PAR(73:75), (/ (U1(2)-U1(6)), (U1(3)-U1(7)), (U1(4)-U1(8)) /)) - PAR(100)
-	  
-	  IF(NBC==19) RETURN
-	  
-	  FB(20)= DOT_PRODUCT(PAR(77:79), PAR(77:79))-1.0
-	  FB(21)= DOT_PRODUCT(PAR(80:82), PAR(80:82))-1.0
-	  
 	  !Lin vector
-	  FB(22)= (U1(2)-U1(6))/SQRT((U1(2)-U1(6))**2+(U1(3)-U1(7))**2+(U1(4)-U1(8))**2)-PAR(73)
-	  FB(23)= (U1(3)-U1(7))/SQRT((U1(2)-U1(6))**2+(U1(3)-U1(7))**2+(U1(4)-U1(8))**2)-PAR(74)
-	  FB(24)= (U1(4)-U1(8))/SQRT((U1(2)-U1(6))**2+(U1(3)-U1(7))**2+(U1(4)-U1(8))**2)-PAR(75)
+	  FB(17)= (U1(1)-U1(5))-PAR(72)
+	  FB(18)= (U1(2)-U1(6))-PAR(73)
+	  FB(19)= (U1(3)-U1(7))-PAR(74)
+	  FB(20)= (U1(4)-U1(8))-PAR(75)
 	  
-	  
-	  !other normal vector obtained by taking the cross product of the Lin vector with the first normal vector
-	  !FB(23)= (PAR(74)*PAR(79)-PAR(75)*PAR(78))-PAR(80)
-	  !FB(24)= -(PAR(73)*PAR(79)-PAR(75)*PAR(77))-PAR(81)
-	  !FB(25)= (PAR(73)*PAR(78)-PAR(74)*PAR(77))-PAR(82)
-	  
-	  !FB(26)= DOT_PRODUCT( (/ (U1(2)-U1(6)), (U1(3)-U1(7)), (U1(4)-U1(8)) /), PAR(80:82) )
-	  
+	  !FB(17)= (U1(3)-U1(7))/SQRT((U1(3)-U1(7))**2 + (U1(4)-U1(8))**2)-PAR(72)
+	  !FB(18)= (U1(4)-U1(8))/SQRT((U1(3)-U1(7))**2 + (U1(4)-U1(8))**2)-PAR(73)
+	  !FB(19)= SQRT((U1(3)-U1(7))**2 + (U1(4)-U1(8))**2)-PAR(76)
+	
+	  !FB(19)= REAL(U1(2)-U1(6))/SQRT((U1(2)-U1(6))**2 + (U1(3)-U1(7))**2 + (U1(4)-U1(8))**2) - PAR(72)
+	  !FB(18)= REAL(U1(3)-U1(7))/SQRT((U1(2)-U1(6))**2 + (U1(3)-U1(7))**2 + (U1(4)-U1(8))**2) - PAR(73)
+	  !FB(17)= REAL(U1(4)-U1(8))/SQRT((U1(2)-U1(6))**2 + (U1(3)-U1(7))**2 + (U1(4)-U1(8))**2) - PAR(74)
+      
+	  !where we are along the spand of the Lin vector
+	  !FB(20)= SQRT((U1(2)-U1(6))**2+(U1(3)-U1(7))**2+(U1(4)-U1(8))**2)-PAR(76)
+	
       END SUBROUTINE BCND
 
 !---------------------------------------------------------------------- 
