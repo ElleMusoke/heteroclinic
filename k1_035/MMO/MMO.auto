@@ -1,0 +1,11 @@
+print 'run0'
+r0 = r(e='MMO', c='MMO', ICP=[5], NPR=1000, NTST = 15);
+r0 = r0 + r(e='MMO', c='MMO', DS = '-', NPR = 1000, NTST = 15)
+r0 = rl(merge(r0));
+
+print 'run1'
+r1 = r(r0('HB1'), IPS = 2, SP=['BP1'], NPR=500, NTST = 30)
+
+#mmo in appropriate parameter space
+r2 = r(r1('PD2'), DS='-', ISW=-1, SP=['PD0', 'BP0'], NTST = 60, UZSTOP={5:5.35}, NPR=1)
+move = r(r2('UZ1'), ICP=[1], UZSTOP={1:0.1}, NPR=10)
