@@ -1,0 +1,101 @@
+from numpy import linspace
+
+#user_points = linspace(0.2,2.5, num=100)
+
+##a branch of the critical manifold
+
+#up=r(e='fast_bif', c='fast_bif', ICP=[11], UZSTOP={11:[0.21,2.55]}, UZR={11:user_points}, NPR=1000)
+#down=r(e='fast_bif', c='fast_bif', ICP=[11, 'X', 'Y'], UZSTOP={11:[0.21,2.55]}, UZR={11:user_points}, DS='-', NPR=1000)
+
+#for i in range(1, 5):
+#    i
+#    uzlabel = "UZ"+str(i)
+#    try:
+#        br = run(down(uzlabel), ICP=['A', 'X', 'Y'], UZSTOP={'A': [0.0, 11.0]}, NPR=1000, DS='-')
+#        br=rl(br)
+#    except(KeyError):
+#        print('oops down')
+#        break
+#    name='d'+str(i)
+#    save(br,name)
+	
+#for i in range(1,5):
+#    try:
+#        save_it_save_it = 'autox to_matlab.py d' + str(i) + ' ./data/down' + str(i)
+#        shell(save_it_save_it)
+#    except:
+#        print('oops matlab' + str(i-1))
+#        break	
+	
+#for i in range(1, 75):
+#    i
+#    uzlabel = "UZ"+str(i)
+#    try:
+#        br = run(up(uzlabel), ICP=['A'], UZSTOP={'A': 11.0}, NPR=1000)
+#        br=rl(br)
+#    except(KeyError):
+#        print('oops up')
+#        break
+#    name='u'+str(i)
+#    save(br,name)
+	
+#for i in range(1,75):
+#    try:
+#        save_it_save_it = 'autox to_matlab.py u' + str(i) + ' ./data/up' +str(i)
+#        shell(save_it_save_it)
+#    except(Error):
+#        print('oops matlab')
+#        break
+
+
+#user_points = linspace(11.0,0.0, num=100)
+
+#start=r(e='fast_bif', c='fast_bif', ICP=['A'], UZSTOP={'A':[0.0]}, UZR={10:user_points}, NPR=1000, NMX=200000)
+
+#for i in range(1, 101):
+#    i
+#    uzlabel = "UZ"+str(i)
+#    try:
+#        br = run(start(uzlabel), ICP=['B'], UZSTOP={'B': [0.0, 2.5]}, NPR=1, NMX=2000, DS='-', DSMAX=0.01)
+#        br=rl(br)
+#    except(KeyError):
+#        print('oops')
+#        break
+#    name='start'+str(i)
+#    save(br,name)
+	
+#for i in range(1,101):
+#    try:
+#        save_it_save_it = 'autox to_matlab.py start' + str(i) + ' ./data2/start' +str(i)
+#        shell(save_it_save_it)
+#    except(Error):
+#        print('oops matlab')
+#        break
+		
+#user_points = linspace(11.0,0.0, num=100)
+
+#start=r(e='fast_bif', c='fast_bif', ICP=['A'], UZSTOP={'A':[0.0]}, UZR={10:user_points}, NPR=1000, NMX=200000)
+
+#for i in range(1, 101):
+#    i
+#    uzlabel = "UZ"+str(i)
+#    try:
+#        br = run(start(uzlabel), ICP=['B'], UZSTOP={'B': [0.0, 2.5]}, NPR=1, NMX=2000, DSMAX=0.01)
+#        br=rl(br)
+#    except(KeyError):
+#        print('oops')
+#        break
+#    name='start'+str(i)
+#    save(br,name)
+
+#for i in range(1,100):
+#    try:
+#        save_it_save_it = 'autox to_matlab.py start' + str(i) + ' ./data3/start' +str(i)
+#        shell(save_it_save_it)
+#    except(Error):
+#        print('oops matlab')
+#        break
+
+
+start=r(e='fast_bif', c='fast_bif', ICP=['B'], UZSTOP={'B':[0.0]}, UZR={10:user_points}, SP=['LP1'], NPR=1000, NMX=20000)
+start2=r(start('LP1'), ICP=['B','A'], ISW=2, NPR=1000, NMX=200000)

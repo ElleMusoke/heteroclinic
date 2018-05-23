@@ -1,0 +1,82 @@
+clear all;
+close all;
+
+piece1= load('../bifurcation_diagram_full/piece1/piece1_bifur');
+piece2= load('../bifurcation_diagram_full/piece2/piece2_bifur');
+piece3= load('../bifurcation_diagram_full/piece3/piece3_bifur');
+piece4= load('../bifurcation_diagram_full/piece4/piece4_bifur');
+piece5= load('../bifurcation_diagram_full/piece5/piece5_bifur');
+piece6= load('../bifurcation_diagram_full/piece6/piece6_bifur');
+
+l=1000;
+
+for i=1:99
+    fname= sprintf('./data2/start%d_bifur',i)
+    data= load(fname);
+    data= chope(data(:,[1 2 3 4]), l, data(1,1), 1);
+    B1(:,i)= data(:,1);
+    X1(:,i)= data(:,3);
+    Y1(:,i)= data(:,4);
+end
+
+user_points2= linspace(11.0,0.0,100);
+
+for i=2:100
+     A1(:,i-1)= user_points2(i)*ones(1000,1);
+end
+
+l=1000;
+
+for i=1:99
+    fname= sprintf('./data3/start%d_bifur',i)
+    data= load(fname);
+    data= chope(data(:,[1 2 3 4]), l, data(1,1), 1);
+    B2(:,i)= data(:,1);
+    X2(:,i)= data(:,3);
+    Y2(:,i)= data(:,4);
+end
+
+for i=2:100
+     A2(:,i-1)= user_points2(i)*ones(1000,1);
+end
+
+fold_up = load('./folds/fold_up_bifur');
+fold_down = load('./folds/fold_down_bifur');
+fold_up1 = load('./folds/fold_up1_bifur');
+fold_down1 = load('./folds/fold_down1_bifur');
+
+figure;
+hold on;
+xlabel('B')
+ylabel('A')
+zlabel('X')
+view([-175.0 26.8])
+xlim([0,2.5])
+plot3(piece1(:,1), piece1(:,3), piece1(:,4), 'k', 'linewidth', 3)
+plot3(piece2(:,1), piece2(:,3), piece2(:,4), 'k--', 'linewidth', 3)
+plot3(piece3(:,1), piece3(:,3), piece3(:,4), 'k', 'linewidth', 3)
+plot3(piece4(:,1), piece4(:,3), piece4(:,4), 'k--', 'linewidth', 3)
+plot3(piece5(:,1), piece5(:,3), piece5(:,4), 'k', 'linewidth', 3)
+plot3(piece6(:,1), piece6(:,3), piece6(:,4), 'k--', 'linewidth', 3)
+plot3(B1,A1,X1, 'color', [163/255 63/255 159/255], 'linewidth',3)
+plot3(B2,A2,X2, 'color', [107/255 127/255 65/255], 'linewidth',3)
+plot3(fold_up(:,5),fold_up(:,1),fold_up(:,3),'linewidth', 3)
+plot3(fold_down(:,5),fold_down(:,1),fold_down(:,3),'linewidth', 3)
+
+figure;
+hold on;
+xlabel('B')
+ylabel('A')
+zlabel('Y')
+view([-175.0 26.8])
+xlim([0,2.5])
+plot3(piece1(:,1), piece1(:,3), piece1(:,5), 'k', 'linewidth', 3)
+plot3(piece2(:,1), piece2(:,3), piece2(:,5), 'k--', 'linewidth', 3)
+plot3(piece3(:,1), piece3(:,3), piece3(:,5), 'k', 'linewidth', 3)
+plot3(piece4(:,1), piece4(:,3), piece4(:,5), 'k--', 'linewidth', 3)
+plot3(piece5(:,1), piece5(:,3), piece5(:,5), 'k', 'linewidth', 3)
+plot3(piece6(:,1), piece6(:,3), piece6(:,5), 'k--', 'linewidth', 3)
+plot3(B1,A1,Y1, 'color', [163/255 63/255 159/255], 'linewidth',3)
+plot3(B2,A2,Y2, 'color', [107/255 127/255 65/255],'linewidth',3)
+plot3(fold_up(:,5),fold_up(:,1),fold_up(:,4),'linewidth', 3)
+plot3(fold_down(:,5),fold_down(:,1),fold_down(:,4),'linewidth', 3)

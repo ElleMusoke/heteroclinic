@@ -1,0 +1,43 @@
+unames = {1: 'X', 2:'Y'}
+parnames = {10: 'A', 11:'B'}
+NDIM = 2
+NBC = 0
+NINT = 0
+NPR=1000
+NPAR = 13
+JAC = 0
+NTST = 100
+NCOL = 4
+IAD = 3
+EPSL = 1e-07 
+EPSU = 1e-07 
+EPSS = 1e-05
+ITMX = 8
+NWTN = 3
+ITNW = 5
+DS = 0.000005
+DSMIN = 0.00000000001 
+DSMAX = 0.0001
+IADS = 1
+THL = {}
+THU = {}
+NMX = 300000
+ICP = ['B']
+ILP = 1
+ISP = 1
+ISW = 1
+MXBF = 0
+IRS = 0
+IPS = 1
+NPR= 10
+IID = 3
+IPLT = 0
+UZR = {}
+
+
+
+
+
+
+
+
