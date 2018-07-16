@@ -14,11 +14,11 @@ r0 = r(e='star', c='star', ICP=[11,12,14,15,25,26,27,28,29,30,31,32,33,34,17,18]
 \
 Now the endpoint of the orbit is in the \cb3 A=10.607 Y=0.00022\cb1  plane.  We\'92ll just keep it here this time, but change it in other computations.  Second step is to increase period allowing startpoint to move in x-direction.  Allow endpoint to move on the 3D stable manifold of the critical manifold.  Stop at fold in period.  This trajectory will be the one that follows the slow manifold for the longest.\
 \
-r1 = r(r0('UZ1'), ICP=[11,12,13,14,15,25,26,27,28,29,30,31,32,33,34,18], NPR=100,SP=['LP1'], NMX=50000)\
+r1 = r(r0('UZ1'), ICP=[11,12,13,14,15,25,26,27,28,29,30,31,32,33,34,17,18], NPR=100,SP=['LP1'], NMX=50000)\
 \
 Next change ISW to 2 and generate starting data.  It\'92s rumoured that this step just generates a more accurate approximation of the fold found in the last step.\
 \
-r2 = r(r1('LP1'), ICP=[11,12,13,14,15,25,26,27,28,29,30,31,32,33,34,17,18], NBC=19,ISW=2, NPR=100, NMX=2000, SP=['LP0'])\
+r2 = r(r1('LP1'), ICP=[11,12,13,17,14,15,25,26,27,28,29,30,31,32,33,34,18], NBC=19,ISW=2, NPR=100, NMX=2000, SP=['LP0'])\
 \
 Now we change period, and look for a value of B for which that period is a fold when one moves the X coordinate around.  We save the orbit that is on the fold.  The tails of r3 makes up a piece of the stable manifold.  DS positive doesn\'92t do anything interesting.  trajectories just get sucked into the saddle\
 \
