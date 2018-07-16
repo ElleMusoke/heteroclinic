@@ -1,6 +1,6 @@
 from numpy import linspace
 
-#user_points = linspace(0.2,2.5, num=100)
+user_points = linspace(0.0,11.0, num=100)
 
 ##a branch of the critical manifold
 
@@ -97,5 +97,27 @@ from numpy import linspace
 #        break
 
 
-start=r(e='fast_bif', c='fast_bif', ICP=['B'], UZSTOP={'B':[0.0]}, UZR={10:user_points}, SP=['LP1'], NPR=1000, NMX=20000)
-start2=r(start('LP1'), ICP=['B','A'], ISW=2, NPR=1000, NMX=200000)
+#start=r(e='fast_bif', c='fast_bif', ICP=['B'], UZSTOP={'B':[0.0]}, UZR={10:user_points}, SP=['LP1'], NPR=1000, NMX=20000)
+#start2=r(start('LP1'), ICP=['B','A'], ISW=2, NPR=1000, NMX=200000)
+
+start=r(e='fast_bif', c='fast_bif', ICP=[11], UZSTOP={11:[2.55]}, UZR={11:user_points}, SP=['LP1'], NPR=1000, NMX=200000)
+
+for i in range(1, 101):
+    i
+    uzlabel = "UZ"+str(i)
+    try:
+        br = run(start(uzlabel), ICP=[11,12,13], UZSTOP={'B': [0.0, 2.5], 12:[0.0,10.0], 13:[0.0, 10.0]}, SP=['LP0'], NPR=1, NMX=2000, DSMAX=0.01)
+        br=rl(br)
+    except(KeyError):
+        print('oops')
+        break
+    name='left'+str(i)
+    save(br,name)
+	
+for i in range(1,101):
+    try:
+        save_it_save_it = 'autox to_matlab.py left' + str(i) + ' ./data4/right' +str(i)
+        shell(save_it_save_it)
+    except(Error):
+        print('oops matlab')
+        break
