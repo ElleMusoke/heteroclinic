@@ -1,0 +1,19 @@
+#start near Hopf bifurcation and then follow flow in forwards time allowing startpoint to move in B=const, X=const plane and endpoint in the A=fixed Y=fixed plane.
+
+r0 = r(e='star',c='star', NBC=8, ICP=[11,24,26,17,18], UZSTOP={17:3.27320E-01})
+r1 = r(r0('UZ1'), ICP=[11,18,12,13,15], UZSTOP={13:0.87})
+
+#first piece
+r2 = r(r1('UZ1'), ICP=[17,11,16,14,12,13],SP=['LP1'], UZSTOP={17:0.8})
+
+#try to move r1 around before r2 so we can get different piece of unstable manifold
+
+moovit_moovit= r(r1('UZ1'), ICP=[16,17,19,12,15,11], UZSTOP={16:5.0})
+r2 = r(moovit_moovit('UZ1'), ICP=[17,11,16,14,12,13],SP=['LP1'], UZSTOP={17:0.8})
+
+#again
+moovit_moovit= r(r1('UZ1'), ICP=[16,17,19,12,15,11], UZSTOP={16:4.0})
+r2 = r(moovit_moovit('UZ1'), ICP=[17,11,16,14,12,13],SP=['LP1'], UZSTOP={17:0.8},NPR=1)
+
+#again
+moovit_moovit= r(r1('UZ1'), ICP=[16,17,19,12,15,11], UZSTOP={16:1.0},DS='-')

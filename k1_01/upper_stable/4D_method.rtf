@@ -1,0 +1,188 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
+{\fonttbl\f0\fnil\fcharset0 AndaleMono;}
+{\colortbl;\red255\green255\blue255;\red71\green204\blue252;\red255\green255\blue51;\red255\green249\blue89;
+\red134\green205\blue77;\red255\green250\blue131;\red47\green255\blue18;\red253\green193\blue49;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww29680\viewh26140\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\f0\fs32 \cf0 \cb2 \CocoaLigature0 First Piece (Different startpoint values for A and Y)\cb1 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+\cf0 \
+First step is to increase period while keeping startpoint fixed in A and Y.  Allow endpoint to move in 2D section of the critical manifold\'92s stable manifold at B=0.9.  This gives two boundary conditions at either end.  Stop integration before start point B coordinate reaches the value of the nearby saddle equilibrium.  Stopping the integration here will prevent increasing periods due to orbits getting too close to the saddle in later steps.\
+\
+r0 = r(e='star', c='star', ICP=[11,12,14,15,25,26,27,28,29,30,31,32,33,34,17,18], NBC=19, UZSTOP=\{17:0.32253\}, DS='-', NMX=258)\
+\
+Now the endpoint of the orbit is in the \cb3 A=10.607 Y=0.00022\cb1  plane.  We\'92ll just keep it here this time, but change it in other computations.  Second step is to increase period allowing startpoint to move in x-direction.  Allow endpoint to move on the 3D stable manifold of the critical manifold.  Stop at fold in period.  This trajectory will be the one that follows the slow manifold for the longest.\
+\
+r1 = r(r0('UZ1'), ICP=[11,12,13,14,15,25,26,27,28,29,30,31,32,33,34,18], NPR=100,SP=['LP1'], NMX=50000)\
+\
+Next change ISW to 2 and generate starting data.  It\'92s rumoured that this step just generates a more accurate approximation of the fold found in the last step.\
+\
+r2 = r(r1('LP1'), ICP=[11,12,13,14,15,25,26,27,28,29,30,31,32,33,34,17,18], NBC=19,ISW=2, NPR=100, NMX=2000, SP=['LP0'])\
+\
+Now we change period, and look for a value of B for which that period is a fold when one moves the X coordinate around.  We save the orbit that is on the fold.  The tails of r3 makes up a piece of the stable manifold.  DS positive doesn\'92t do anything interesting.  trajectories just get sucked into the saddle\
+\
+r3=r(r2, SP=['LP0'], NPR=1, NMX=168, DS='-', UZSTOP=\{17:0.8\})\
+\
+\
+\cb2 Second\cb1 \
+\
+First step is to move orbit generated from r0 around so that the startpoint is in the \cb4 a=4.99020, y=0.75\cb1  plane.\
+\
+r1 = r(r0('UZ1'), ICP=[19,16,11,12,14,15,25,27,28,29,26,30,32,33,34,31], UZSTOP=\{19:0.75\}, DS='-')\
+\
+Then I move it around in the x-direction to see where the fold in time is\
+\
+r2 = r(r1('UZ1'), ICP=[11,12,13,14,15,25,26,27,28,29,30,31,32,33,34,18], NPR=100,SP=['LP1'], NMX=50000, DS='-')\
+\
+Next change ISW to 2 and generate starting data\
+\
+r3 = r(r2('LP1'), ICP=[11,12,13,14,15,25,26,27,28,29,30,31,32,33,34,18,17], NBC=19,ISW=2, NPR=100, NMX=2000, SP=['LP0'])\
+\
+Then move period around and find values of startpoint x and b for which the period is a fold\
+\
+r4 = r(r3, NMX=160, DS='-', NPR=1, UZSTOP=\{17:0.8\})\
+\
+\
+\cb2 Third\
+\cb1 \
+First step is to move orbit generated from r1 in the previous step so that the endpoint is in the \cb3 a=3.6, y=1.89831\cb1  plane.\
+\
+r2 = r(r1('UZ1'), ICP=[16,19,11,12,14,15,25,27,28,29,26,30,32,33,34,31], UZSTOP=\{16:3.6\}, DS='-')\
+\
+Then I move it around in the x-direction to see where the fold in time is\
+\
+r3 = r(r2('UZ1'), ICP=[11,12,13,14,15,25,26,27,28,29,30,31,32,33,34,18], NPR=100,SP=['LP1'], NMX=50000)\
+\
+Next change ISW to 2 and generate starting data\
+\
+r4 = r(r3('LP1'), ICP=[11,12,13,14,15,25,26,27,28,29,30,31,32,33,34,18,17], NBC=19,ISW=2, NPR=100, NMX=2000, SP=['LP0'])\
+\
+Then move period around and find values of startpoint x and b for which the period is a fold\
+\
+r5=r(r4, SP=['LP0'], NPR=1, NMX=168, DS='-', UZSTOP=\{17:0.8\})\
+\
+\
+\cb2 Fourth\cb1 \
+\
+First step is to move orbit generated from r0 in first computation so that the endpoint is in the \cb3 a=4.0, y=1.39538\cb1  plane.\
+\
+r1 = r(r0('UZ1'), ICP=[16,19,11,12,14,15,25,27,28,29,26,30,32,33,34,31], UZSTOP=\{16:4.0\})\
+\
+Then I move it around in the x-direction to see where the fold in time is\
+\
+r2 = r(r1('UZ1'), ICP=[11,12,13,14,15,25,26,27,28,29,30,31,32,33,34,18], NPR=100,SP=['LP1'], NMX=50000)\
+\
+Next change ISW to 2 and generate starting data\
+\
+r3 = r(r2('LP1'), ICP=[11,12,13,14,15,25,26,27,28,29,30,31,32,33,34,18,17], NBC=19,ISW=2, NPR=100, NMX=2000, SP=['LP0'])\
+\
+Then move period around and find values of startpoint x and b for which the period is a fold\
+\
+r4=r(r3, SP=['LP0'], NPR=1, NMX=168, DS='-', UZSTOP=\{17:0.8\})\
+\
+\
+\cb2 Fifth\cb1 \
+\
+First step is to move orbit generated from r1 in the last computation we did so that the endpoint is in the \cb4 a=5.00000E+00, y=7.45867E-01\cb1  plane.\
+\
+first_orbit = r(r0('UZ1'), ICP=[19,16,11,12,14,15,25,27,28,29,26,30,32,33,34,31], UZSTOP=\{19:0.25\}, DS='-')\
+second_orbit = r(first_orbit('UZ1'), ICP=[16,19,11,12,14,15,25,27,28,29,26,30,32,33,34,31], DS='-', UZSTOP=\{16:5.0\})\
+\
+Then I move it around in the x-direction to see where the fold in time is\
+\
+third_orbit = r(second_orbit('UZ1'), ICP=[11,12,13,14,15,25,26,27,28,29,30,31,32,33,34,18], NPR=100,SP=['LP1'], NMX=50000)\
+\
+Next change ISW to 2 and generate starting data\
+\
+starting_data = r(third_orbit('LP1'), ICP=[11,12,13,14,15,25,26,27,28,29,30,31,32,33,34,18,17], NBC=19,ISW=2, NPR=100, NMX=2000, SP=['LP0'])\
+\
+Then move period around and find values of startpoint x and b for which the period is a fold\
+\
+stable_manifold=r(starting_data, SP=['LP0'], NPR=1, NMX=168, DS='-', UZSTOP=\{17:0.8\})\
+\
+\cb2 Sixth\cb1 \
+\
+first_orbit = r(r0('UZ1'), ICP=[19,16,11,12,14,15,25,27,28,29,26,30,32,33,34,31], UZSTOP=\{19:0.15\}, DS='-')\
+second_orbit=r(first_orbit('UZ1'), ICP=[11,12,13,14,15,25,26,27,28,29,30,31,32,33,34,18], NPR=100,SP=['LP1'], NMX=50000, DS='-')\
+starting_data = r(second_orbit('LP1'), ICP=[11,12,13,14,15,25,26,27,28,29,30,31,32,33,34,18,17], NBC=19,ISW=2, NPR=100, NMX=2000, SP=['LP0'])\
+stable_manifold=r(starting_data, SP=['LP0'], NPR=1, NMX=168, DS='-', UZSTOP=\{17:0.8\})\
+\
+\
+\cb5 Different values for X and Y\cb1 \
+\
+First step is to move orbit generated from r0 around so that the endpoint is in the \cb4 x\cb6 =-6.67640E-02, y\cb4 =1.0\cb1  plane.\
+\
+r1 = r(r0('UZ1'), ICP=[19,18,11,12,14,15,25,27,28,29,26,30,32,33,34,31], UZSTOP=\{19:1.0\}, DS='-')\
+\
+Then I move it around in the a-direction to see where the fold in time is\
+\
+r2 = r(r1('UZ1'), ICP=[11,12,13,14,15,25,26,27,28,29,30,31,32,33,34,16], NPR=100,SP=['LP1'], NMX=50000, DS='-')\
+\
+Next change ISW to 2 and generate starting data\
+\
+r3 = r(r2('LP1'), ICP=[11,12,13,14,15,25,26,27,28,29,30,31,32,33,34,16,17], NBC=19,ISW=2, NPR=100, NMX=2000, SP=['LP0'])\
+\
+Then move period around and find values of startpoint x and b for which the period is a fold\
+\
+r4 = r(r3, NMX=160, DS='-', NPR=1, UZSTOP=\{17:0.6\})\
+\
+\cb5 Eighth\cb1 \
+\
+First step is to move orbit generated from r0 around so that the endpoint is in the \cb4 x\cb6 =\cf7 \cb0 1.11359E+00\cf0 \cb6 , y\cb4 =-1.0\cb1  plane.\
+\
+r1 = r(r0('UZ1'), ICP=[19,18,11,12,14,15,25,27,28,29,26,30,32,33,34,31], UZSTOP=\{19:-1.0\})\
+\
+Then I move it around in the a-direction to see where the fold in time is\
+\
+r2 = r(r1('UZ1'), ICP=[11,12,13,14,15,25,26,27,28,29,30,31,32,33,34,16], NPR=100,SP=['LP1'], NMX=50000)\
+\
+Next change ISW to 2 and generate starting data\
+\
+r3 = r(r2('LP1'), ICP=[11,12,13,14,15,25,26,27,28,29,30,31,32,33,34,16,17], NBC=19,ISW=2, NPR=100, NMX=2000, SP=['LP0'])\
+\
+Then move period around and find values of startpoint x and b for which the period is a fold\
+\
+r4 = r(r3, NMX=160, DS='-', NPR=1, UZSTOP=\{17:0.6\})\
+\
+\cb5 Nineth\cb1 \
+\
+r0 = r(e='star', c='star', ICP=[11,12,14,15,25,26,27,28,29,30,31,32,33,34,17,18], NBC=19, UZSTOP=\{17:0.45\}, DS='-', NMX=258)\
+\
+First step is to move orbit generated from r0 around so that the endpoint is in the \cb4 b\cb6 =\cf7 \cb0 2.50000E-01\cf0 \cb6 , y\cb4 =-1.0\cb1  plane.\
+\
+r1 = r(r0('UZ1'), ICP=[19,18,11,12,14,15,25,27,28,29,26,30,32,33,34,31], UZSTOP=\{19:-1.0\})\
+\
+Then I move it around in the a-direction to see where the fold in time is\
+\
+r2 = r(r1('UZ1'), ICP=[11,12,13,14,15,25,26,27,28,29,30,31,32,33,34,16], NPR=100,SP=['LP1'], NMX=50000)\
+\
+Next change ISW to 2 and generate starting data\
+\
+r3 = r(r2('LP1'), ICP=[11,12,13,14,15,25,26,27,28,29,30,31,32,33,34,16,17], NBC=19,ISW=2, NPR=100, NMX=2000, SP=['LP0'])\
+\
+Then move period around and find values of startpoint x and b for which the period is a fold\
+\
+r4 = r(r3, NMX=160, DS='-', NPR=1, UZSTOP=\{17:0.6\})\
+\
+Tenth\
+r0 = r(e='star', c='star', ICP=[11,12,14,15,25,26,27,28,29,30,31,32,33,34,17,18], NBC=19, UZSTOP=\{17:0.45\}, DS='-', NMX=258)\
+r1 = r(r0('UZ1'), ICP=[19,18,11,12,14,15,25,27,28,29,26,30,32,33,34,31], UZSTOP=\{19:-1.0\})\
+r2 = r(r1('UZ1'), ICP=[11,12,13,14,15,25,26,27,28,29,30,31,32,33,34,16], NPR=100,SP=['LP1'], NMX=50000)\
+r3 = r(r2('LP1'), ICP=[11,12,13,14,15,25,26,27,28,29,30,31,32,33,34,16,17], NBC=19,ISW=2, NPR=100, NMX=2000, SP=['LP0'])\
+r4 = r(r3, NMX=160,NPR=1, UZSTOP=\{16:6.0\})\
+\
+Eleventh\
+r0 = r(e='star', c='star', ICP=[11,12,14,15,25,26,27,28,29,30,31,32,33,34,17,18], NBC=19, UZSTOP=\{17:0.5\}, DS='-', NMX=258)\
+\
+\cb8 Moving things into k1=0.35\cb1 \
+\
+r0 = r(e='star', c='star', ICP=[11,12,14,15,25,26,27,28,29,30,31,32,33,34,17,18], NBC=19, UZSTOP=\{17:0.6\}, DS='-', NMX=258)\
+r1 = r(r0('UZ1'), ICP=[16,11,12,14,15,25,26,27,28,29,30,31,32,33,34,18], NBC=19, UZSTOP=\{16:2.5\}, NMX=258)\
+k1_035=r(r1('UZ1'), ICP=[1,12,14,15,27,28,29,32,33,34,30,25,26,31,18,11], UZSTOP=\{1:0.35\}, NPR=100, DS='-', NMX=10000, SP=['LP1'])\
+k1_035=r(k1_035('UZ1'), ICP=[16,12,14,15,27,28,29,32,33,34,30,25,26,31,18,11], UZSTOP=\{16:2.0\}, NPR=10, DS='-', NMX=10000, SP=['LP1'])\
+find_fold=r(k1_035('UZ1'), ICP=[11,12,13,14,15,27,28,29,32,33,34,30,25,26,31,18], UZSTOP=\{1:0.35\}, NPR=100, DS='-', NMX=10000, SP=['LP1'])\
+starting_data = r(find_fold('LP1'), ICP=[11,17,12,13,14,15,25,26,27,28,29,30,31,32,33,34,18], NBC=19,ISW=2, NPR=100, NMX=2000, SP=['LP0'])\
+surface=r(starting_data, SP=['LP0'], NPR=1, NMX=168, DS='-', UZSTOP=\{17:0.8\})\
+\
+}

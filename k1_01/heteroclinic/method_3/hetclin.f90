@@ -66,7 +66,7 @@
 
       DOUBLE PRECISION Period, alpha, mu, kappa, zeta, epsilon, epsilon_b
 
-	  PAR(1:12)= (/ 0.1, 250.0, 0.035, 20.0, 5.35, 1E-4, 0.8, 0.1, 0.825, 0.0, 0.0, 0.0 /) !PAR(1:9) table parameters, PAR(10) placeholder, PAR(11:12) Period, Period2
+	  PAR(1:12)= (/ 0.1, 250.0, 0.035, 20.0, 5.35, 1E-5, 0.8, 0.1, 0.825, 0.0, 0.0, 0.0 /) !PAR(1:9) table parameters, PAR(10) placeholder, PAR(11:12) Period, Period2
 	  
 	  !top orbit specific stuff
 	  !PAR(40:47)= (/ 10.606801, 0.9, 0.04791639, 0.000217709, 10.606801, 0.9, 0.04791639, 0.000217709 /) !PAR(13:16), PAR(17:20) startpoint and endpoint for top orbit

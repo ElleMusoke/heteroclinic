@@ -1,0 +1,7 @@
+r0 = r(e='slow_stable_lower', c='slow_stable_lower', ICP=[11,17,18,16,21],SP=['LP1'], UZSTOP={17:0.8})
+r1 = r(r0('UZ1'),ICP=[11,18,13,12,16], UZSTOP={13:0.3225})
+r2=r(r1('UZ1'),ICP=[17,11,16,12,19],DS='-',UZSTOP={17:0.325}, NPR=1)
+
+#top
+moovit_moovit=r(r0('UZ1'),ICP=[19,11,12,17,18],SP=['LP0'],UZSTOP={19:3},NMX=500)
+r2=r(moovit_moovit('UZ1'),ICP=[17,11,16,12,18],DS='-',UZSTOP={17:0.3251}, NPR=1)

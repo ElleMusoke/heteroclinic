@@ -1,0 +1,6 @@
+r0 = r(e='star',c='star', NBC=8, ICP=[11,24,26,17,18], UZSTOP={17:0.5})
+r1 = r(r0('UZ1'), NBC=8, ICP=[11,24,26,18,19], NMX=3000, NPR=10)
+
+#moovit moovit (fixed A and Y intersection)
+r_moov=r(r0('UZ1'),ICP=[16,11,24,26,19],UZSTOP={16:6.0})
+r_moov2=r(r_moov('UZ1'),ICP=[19,11,24,26,18],UZSTOP={19:0.25},NPR=1)

@@ -1,0 +1,7 @@
+#first orbit on slow manifold: start at equilibrium point on critical manifold, this will become the endpoint (wrt to the #flow).  Increase period (wrt to the flow) and decrease the B coordinate of the startpoint.  Allow startpoint to move out #in the unstable direction of the equilibrium on the critical manifold.  Stop continuation before B gets to the fold.
+
+r0=r(e='new_7_8_2017', c='new_7_8_2017', ICP=[17,11,16,18,19,20,21,22,23,24,12,14,15,27,28,29,32,33,34,26,31,30,25], DS='-', SP=['LP1'])
+
+#better approximation: take last orbit calculated in step1 (in AUTO speak r0(‘UZ1’)).  Increase period (wrt to the flow) #allowing the endpoint to vary in the stable plane of the critical manifold at the B coordinate of the endpoint of the #orbit from step1.  Allow the startpoint to vary in the b,y plane defined by the a and x coordinates of the startpoint of #the orbit from step1.
+ 
+r1=r(r0('LP1'), ICP=[11,16,18,19,20,21,22,23,24,12,13,14,15,27,28,29,32,33,34,26,31,30,25], NPR=10, SP=['LP1'])

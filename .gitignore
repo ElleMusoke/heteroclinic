@@ -3,3 +3,15 @@
 *.py
 *.m
 bifurcation_diagram_pieces/
+bifurcation_diagram_full/
+*.fig
+*.png
+fort.7
+fort.8
+fort.9
+*.exe
+b.*
+d.*
+s.*
+*.jpg
+*.mat

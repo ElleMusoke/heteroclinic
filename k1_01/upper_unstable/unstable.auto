@@ -1,0 +1,45 @@
+##================================
+## LOWER BRANCH
+##================================
+
+#let startpoint vary along unstable eigendirection while increasing period and allowing the endpoint to move wherever it wants as long as it stays in the same A plane as the startpoint.
+
+r0 = r(e='unstable', c='unstable', NBC=8, ICP=[11,21,17,18,19], UZSTOP={17:0.8}, NPR=100)
+
+#now just to make sure we get a good approximation, allow the endpoint move in the direction parallel to the y-axis.  Unfortunately because of that saddle, we cannot allow the startpoint to vary in B or else the whole trajectory get's sucked down into the saddle's unstable manifold and we have a bad time.  We let it vary in the A, X and Y instead.  Stop integration when we get a fold in time. 
+
+r1 = r(r0('UZ1'), ICP=[11,19,18,14,15], SP=['LP1'])
+
+#Next change ISW to 2 and generate starting data.  It’s rumoured that this step just generates a more accurate approximation of the fold found in the last step.
+
+r2 = r(r1('LP1'), ICP=[11,19,18,14,15,17], ISW=2, NPR=100, NMX=2000, SP=['LP0'])
+
+#Now we change period, and look for a value of B for which that period is a fold when one moves the X coordinate around.  We save the orbit that is on the fold.  The tails of r3 makes up a piece of the #stable manifold.  DS positive doesn’t do anything interesting.  trajectories just get sucked into the saddle
+
+r3=r(r2, SP=['LP0'], NPR=100, DS='-', UZSTOP={17:0.3}, NMX=1000000)
+
+##================================
+## UPPER BRANCH
+##================================
+
+#let startpoint vary along unstable eigendirection while increasing period and allowing the endpoint to move wherever it wants as long as it stays in the same A plane as the startpoint.
+
+r0 = r(e='unstable', c='unstable', NBC=8, ICP=[11,21,17,18,19], UZSTOP={17:0.8}, NPR=100)
+
+#move endpoint so that it's A coordinate is on the other side of the critical manifold.
+
+r1 = r(r0('UZ1'), ICP=[11,21,16,19,18], UZSTOP={16:10.5}, DS='-', NPR=1000)
+
+#now just to make sure we get a good approximation, allow the endpoint move in the direction parallel to the y-axis.  Unfortunately because of that saddle, we cannot allow the startpoint to vary in B or else the whole trajectory get's sucked down into the saddle's unstable manifold and we have a bad time.  We let it vary in the A, X and Y instead.  Stop integration when we get a fold in time. 
+
+r2 = r(r1('UZ1'), ICP=[11,19,18,14,15], SP=['LP1'], DS='-', NPR=100)
+
+#Next change ISW to 2 and generate starting data.  It’s rumoured that this step just generates a more accurate approximation of the fold found in the last step.
+
+r3 = r(r2('LP1'), ICP=[11,19,18,14,15,17], ISW=2, NPR=100, NMX=2000, SP=['LP0'])
+
+#Now we change period, and look for a value of B for which that period is a fold when one moves the X coordinate around.  We save the orbit that is on the fold.  The tails of r3 makes up a piece of the #stable manifold.  DS positive doesn’t do anything interesting.  trajectories just get sucked into the saddle
+
+r4=r(r3, SP=['LP0'], NPR=100, DS='-', UZSTOP={17:0.46}, NMX=1000000)
+
+#saddle at (a, b, x, y) = (3.5543523160658533377274211068911 0.32252284625797180591497459978325 1.0993120635759691410092529826354 0.56304026879390164145746976188598)

@@ -1,0 +1,1 @@
+r0 = r(e='slow_stable_lower', c='slow_stable_lower', ICP=[17,11,21,16,18,19], SP=['LP1'], UZSTOP={17:0.89})
