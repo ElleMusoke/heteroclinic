@@ -1,0 +1,161 @@
+clear;
+close all;
+
+%-----------------------------------------------------------------------
+% BIFURCATION DIAGRAM
+%-----------------------------------------------------------------------
+
+piece1= load('../bifurcation_diagram_pieces/bottom_stable/bottom_stable_bifur');
+piece2= load('../bifurcation_diagram_pieces/C_t/C_t_bifur');
+piece3= load('../bifurcation_diagram_pieces/C_b/C_b_bifur');
+piece4= load('../bifurcation_diagram_pieces/stable_branch/stable_bifur');
+
+%-----------------------------------------------------------------------
+% MANIFOLDS
+%-----------------------------------------------------------------------
+
+%%% Discretize each orbit in 'l' points:
+l= 1000;
+
+%-----------------------------------------------------------------------
+% Default
+%-----------------------------------------------------------------------
+
+%%% Number of orbits generated from AUTO:
+n_first_manifold= 62;  
+
+for i=1:n_first_manifold fname=sprintf('./first_manifold/first_manifold_solution_%d',i);
+    data=load(fname);
+    data1=chope(data(:,[1 2 3 4 5]), l, data(2,2), 1);
+    t_first_manifold(:,i)=data1(:,1);
+    A_first_manifold(:,i)=data1(:,2);
+    B_first_manifold(:,i)=data1(:,3);
+    X_first_manifold(:,i)=data1(:,4);
+    Y_first_manifold(:,i)=data1(:,5);
+end
+ 
+%-----------------------------------------------------------------------
+% A=4.0 X=0.75
+%-----------------------------------------------------------------------
+
+%%% Number of orbits generated from AUTO:
+n_A4_X075= 89;  
+
+for i=1:n_A4_X075 fname=sprintf('./A4_X075/A4_X075_solution_%d',i);
+    data=load(fname);
+    data2=chope(data(:,[1 2 3 4 5]), l, data(2,2), 1);
+    t_A4_X075(:,i)=data2(:,1);
+    A_A4_X075(:,i)=data2(:,2);
+    B_A4_X075(:,i)=data2(:,3);
+    X_A4_X075(:,i)=data2(:,4);
+    Y_A4_X075(:,i)=data2(:,5);
+end
+
+%-----------------------------------------------------------------------
+% A=4.0 Y=0.75
+%-----------------------------------------------------------------------
+
+%%% Number of orbits generated from AUTO:
+n_A4_Y075= 75;  
+
+for i=1:n_A4_Y075 fname=sprintf('./A4_Y075/A4_Y075_solution_%d',i);
+    data=load(fname);
+    data2=chope(data(:,[1 2 3 4 5]), l, data(2,2), 1);
+    t_A4_Y075(:,i)=data2(:,1);
+    A_A4_Y075(:,i)=data2(:,2);
+    B_A4_Y075(:,i)=data2(:,3);
+    X_A4_Y075(:,i)=data2(:,4);
+    Y_A4_Y075(:,i)=data2(:,5);
+end
+
+%-----------------------------------------------------------------------
+% A=6.0 X=0.5
+%-----------------------------------------------------------------------
+
+%%% Number of orbits generated from AUTO:
+n_A6_X05= 114;  
+
+for i=1:n_A6_X05 fname=sprintf('./A6_X05/A6_X05_solution_%d',i);
+    data=load(fname);
+    data2=chope(data(:,[1 2 3 4 5]), l, data(2,2), 1);
+    t_A6_X05(:,i)=data2(:,1);
+    A_A6_X05(:,i)=data2(:,2);
+    B_A6_X05(:,i)=data2(:,3);
+    X_A6_X05(:,i)=data2(:,4);
+    Y_A6_X05(:,i)=data2(:,5);
+end
+
+%-----------------------------------------------------------------------
+% A=6.0 Y=0.5
+%-----------------------------------------------------------------------
+
+%%% Number of orbits generated from AUTO:
+n_A6_Y05= 90;  
+
+for i=1:n_A6_Y05 fname=sprintf('./A6_Y05/A6_Y05_solution_%d',i);
+    data=load(fname);
+    data2=chope(data(:,[1 2 3 4 5]), l, data(2,2), 1);
+    t_A6_Y05(:,i)=data2(:,1);
+    A_A6_Y05(:,i)=data2(:,2);
+    B_A6_Y05(:,i)=data2(:,3);
+    X_A6_Y05(:,i)=data2(:,4);
+    Y_A6_Y05(:,i)=data2(:,5);
+end
+
+%-----------------------------------------------------------------------
+% ABX Projection
+%-----------------------------------------------------------------------
+
+figure
+hold on
+
+xlabel('B')
+ylabel('A')
+zlabel('X')
+view([140,40])
+
+plot3(piece1(:,1), piece1(:,3), piece1(:,4), 'k', 'LineWidth', 5)
+plot3(piece2(:,1), piece2(:,3), piece2(:,4), 'k--', 'LineWidth', 5)
+plot3(piece3(:,1), piece3(:,3), piece3(:,4), 'k--', 'LineWidth', 5)
+plot3(piece4(:,1), piece4(:,3), piece4(:,4), 'k', 'LineWidth', 5)
+
+surf(B_first_manifold, A_first_manifold, X_first_manifold, 'lines','none','facecolor','b','facealpha',0.3)
+plot3(B_first_manifold(:,30), A_first_manifold(:,30), X_first_manifold(:,30), 'm', 'LineWidth', 5)
+
+surf(B_A4_X075, A_A4_X075, X_A4_X075, 'lines','none','facecolor','b','facealpha',0.3)
+plot3(B_A4_X075(:,30), A_A4_X075(:,30), X_A4_X075(:,30), 'm', 'LineWidth', 5)
+
+surf(B_A4_Y075, A_A4_Y075, X_A4_Y075, 'lines','none','facecolor','b','facealpha',0.3)
+plot3(B_A4_Y075(:,30), A_A4_Y075(:,30), X_A4_Y075(:,30), 'm', 'LineWidth', 5)
+
+surf(B_A6_Y05, A_A6_Y05, X_A6_Y05, 'lines','none','facecolor','b','facealpha',0.3)
+plot3(B_A6_Y05(:,30), A_A6_Y05(:,30), X_A6_Y05(:,30), 'm', 'LineWidth', 5)
+
+
+
+%-----------------------------------------------------------------------
+% ABY Projection
+%-----------------------------------------------------------------------
+
+figure
+hold on
+
+xlabel('B')
+ylabel('A')
+zlabel('Y')
+view([140,40])
+
+plot3(piece1(:,1), piece1(:,3), piece1(:,5), 'k', 'LineWidth', 5)
+plot3(piece2(:,1), piece2(:,3), piece2(:,5), 'k--', 'LineWidth', 5)
+plot3(piece3(:,1), piece3(:,3), piece3(:,5), 'k--', 'LineWidth', 5)
+plot3(piece4(:,1), piece4(:,3), piece4(:,5), 'k', 'LineWidth', 5)
+
+surf(B_first_manifold, A_first_manifold, Y_first_manifold, 'lines','none','facecolor','b','facealpha',0.3)
+plot3(B_first_manifold(:,30), A_first_manifold(:,30), Y_first_manifold(:,30), 'm', 'LineWidth', 5)
+
+surf(B_A4_X075, A_A4_X075, Y_A4_X075, 'lines','none','facecolor','b','facealpha',0.3)
+plot3(B_A4_X075(:,30), A_A4_X075(:,30), Y_A4_X075(:,30), 'm', 'LineWidth', 5)
+
+surf(B_A4_Y075, A_A4_Y075, Y_A4_Y075, 'lines','none','facecolor','b','facealpha',0.3)
+plot3(B_A4_Y075(:,30), A_A4_Y075(:,30), Y_A4_Y075(:,30), 'm', 'LineWidth', 5)
+

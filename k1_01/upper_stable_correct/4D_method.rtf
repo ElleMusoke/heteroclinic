@@ -1,0 +1,74 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
+{\fonttbl\f0\fnil\fcharset0 AndaleMono;}
+{\colortbl;\red255\green255\blue255;\red71\green204\blue252;\red47\green255\blue18;\red255\green255\blue51;
+\red255\green249\blue89;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww29680\viewh26140\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\f0\fs32 \cf0 \cb2 \CocoaLigature0 First Piece (Different startpoint values for A and Y)\cb1 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+\cf0 \
+First step is to increase period while keeping startpoint fixed in A and Y.  Allow endpoint to move in 2D section of the critical manifold\'92s linear stable space at B=0.9.  This gives two boundary conditions at either end.  Stop integration before start point B coordinate reaches the value of the nearby saddle equilibrium.  Stopping the integration here will prevent increasing periods due to orbits getting too close to the saddle in later steps.\
+\cf3 \
+\cb0 r0 = r(e='star', c='star', ICP=[11,26,31,17,18], UZSTOP=\{17:0.25\}, DS='-', NPR=10)\cf0 \cb1 \
+\cf3 \
+\cf0 \
+Now the endpoint of the orbit is in the \cb4 A=10.6055 Y=2.300E-4\cb1  plane.  We\'92ll just keep it here this time, but change it in other computations.  Second step is to increase period allowing startpoint to move in x-direction.  Allow endpoint to move in 3D space spanned by the B basis vector and the two stable eigenvectors at B=0.9.  Stop at fold in period.  This trajectory will be the one that follows the slow manifold for the longest.\
+\
+\cf3 \cb0 r1 = r(r0('UZ1'), ICP=[11,26,31,13,18], SP=['LP1'], UZSTOP=\{17:0.23\}, NPR=10)\cf0 \cb1 \
+\
+Next change ISW to 2 and generate starting data.  It\'92s rumoured that this step just generates a more accurate approximation of the fold found in the last step.\
+\
+\cf3 \cb0 r2 = r(r1('LP1'), ICP=[11,26,31,13,18,17], ISW=2, NPR=100, NMX=2000, SP=['LP0'])\cf0 \cb1 \
+\
+Now we change period, and look for a value of B for which that period is a fold when one moves the X coordinate around.  We save the orbit that is on the fold.  The tails of r3 makes up a piece of the stable manifold.\
+\
+\cf3 \cb0 r3 = r(r2, ICP=[11,17,18,26,31,13], DS='-')\cf0 \cb1 \
+\
+A subsection with start points in the \cb5 a=4.0, y=0.75\cb1  plane.\
+\
+\cf3 \cb0 r1 = r(r0('UZ1'), ICP=[16,11,26,31,17], SP=['LP1'], UZSTOP=\{16:4.0\}, NPR=10)\
+r2 = r(r1('UZ1'), ICP=[19,11,26,31,17], SP=['LP1'], UZSTOP=\{19:0.75\}, DS='-', NPR=10)\
+r3 = r(r2('UZ1'), ICP=[11,26,31,13,18], SP=['LP1'], UZSTOP=\{17:0.23\}, NPR=10, DS='-')\
+r4 = r(r3('LP1'), ICP=[11,26,31,13,18,17], ISW=2, NPR=100, NMX=2000, SP=['LP0'])\
+r5 = r(r4, UZSTOP=\{17:0.3037\}, NPR=1)\
+r6 = r(r5, UZSTOP=\{17:0.8\}, DS='-', NPR=1)\
+\cf0 \cb1 \
+A subsection with start points in the \cb5 a=2.0, y=default\cb1  plane.\
+\
+\cf3 \cb0 r0 = r(e='star', c='star', ICP=[11,26,31,17,18], UZSTOP=\{17:0.5\}, DS='-', NPR=10)\cf0 \cb1 \
+\cf3 \cb0 r1 = r(r0('UZ1'), ICP=[16,11,26,31,18], SP=['LP1'], UZSTOP=\{16:2.0\}, NPR=10)\
+r2 = r(r1('UZ1'), ICP=[11,26,31,13,18], SP=['LP1'], UZSTOP=\{17:0.23\}, NPR=10)\
+r3 = r(r2('LP1'), ICP=[11,26,31,13,18,17], ISW=2, NPR=100, NMX=2000, SP=['LP0'])\
+r4 = r(r3, UZSTOP=\{17:0.8\}, DS='-', NPR=1)\
+\cf0 \cb1 \
+A subsection with start points in the \cb5 a=6.0, y=0.5\cb1  plane.\
+\
+\cf3 \cb0 r1 = r(r0('UZ1'), ICP=[16,11,26,31,17], SP=['LP1'], UZSTOP=\{16:6.0\}, NPR=10)\
+r2 = r(r1('UZ1'), ICP=[19,11,26,31,18], SP=['LP1'], UZSTOP=\{19:0.5\}, DS='-', NPR=10)\
+r3 = r(r2('UZ1'), ICP=[11,26,31,13,18], SP=['LP1'], UZSTOP=\{17:0.23\}, NPR=10, DS='-')\
+r4 = r(r3('LP1'), ICP=[11,26,31,13,18,17], ISW=2, NPR=100, NMX=2000, SP=['LP0'])\
+r5 = r(r4, UZSTOP=\{17:0.255\}, NPR=1)\
+r6 = r(r5, UZSTOP=\{17:0.8\}, DS='-', NPR=1)\
+\cb1 \
+\
+\cf0 A subsection with start points in the \cb5 a=4.0, x=0.75\cb1  plane.\
+\
+\cf3 \cb0 r0 = r(e='star', c='star', ICP=[11,26,31,17,18], UZSTOP=\{17:0.8\}, DS='-', NPR=10)\cf0 \
+\cf3 r1 = r(r0('UZ1'), ICP=[16,11,26,31,19], SP=['LP1'], UZSTOP=\{16:4.0\}, NPR=10)\
+r2 = r(r1('UZ1'), ICP=[18,11,26,31,19], SP=['LP1'], UZSTOP=\{18:0.75\}, DS='-', NPR=10)\
+r3 = r(r2('UZ1'), ICP=[11,26,31,13,19], SP=['LP1'], UZSTOP=\{17:0.23\}, NPR=10, DS='-')\
+r4 = r(r3('LP1'), ICP=[11,26,31,13,19,17], ISW=2, NPR=100, NMX=2000, SP=['LP0'])\
+r5 = r(r4, UZSTOP=\{17:0.35\}, NPR=1)\
+\cf0 \cb1 \
+A subsection with start points in the \cb5 a=6.0, x=0.5\cb1  plane.\
+\
+\cf3 \cb0 r0 = r(e='star', c='star', ICP=[11,26,31,17,18], UZSTOP=\{17:0.4\}, DS='-', NPR=10)\cf0 \
+\cf3 r1 = r(r0('UZ1'), ICP=[16,11,26,31,19], SP=['LP1'], UZSTOP=\{16:6.0\}, NPR=10)\
+r2 = r(r1('UZ1'), ICP=[18,11,26,31,19], SP=['LP1'], UZSTOP=\{18:0.5\}, DS='-', NPR=10)\
+r3 = r(r2('UZ1'), ICP=[11,26,31,13,19], SP=['LP1'], UZSTOP=\{17:0.23\}, NPR=10, DS='-')\
+r4 = r(r3('LP1'), ICP=[11,26,31,13,17,19], ISW=2, NPR=100, NMX=2000, SP=['LP0'])\
+r5 = r(r4, UZSTOP=\{17:0.35\}, NPR=1)\
+r6 = r(r5, UZSTOP=\{17:0.8\}, DS='-', NPR=1)\
+\
+}
