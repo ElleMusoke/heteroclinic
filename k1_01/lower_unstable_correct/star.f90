@@ -67,29 +67,17 @@
 
       DOUBLE PRECISION Period, alpha, mu, kappa, zeta, epsilon, epsilon_b
 
-	  !PAR(1:37)= (/ 0.1, 250.0, 0.035, 20.0, 5.35, 1E-4, 0.8, 0.1, 0.825,& !PAR(1:9) table 1 parameters
-	  !0.0, 0.0,& !PAR(10:11) PAR(11) is where AUTO stores the value of the period so we want to avoid it
-	  !0.81121984904465478078341498694954, 0.8000, 1.0217186418928954008370196563427, 0.6330650413608834359467877018843,& !PAR(12:15) initial endpoint
-	  !0.81121984904465478078341498694954, 0.8000, 1.0217186418928954008370196563427, 0.6330650413608834359467877018843,& !PAR(16:19) initial startpoint
-	  !-0.078125183105597024611054555384932, 0.61135628225381851355442321377554, 0.77461280007098070706464062296643,& !PAR(20:22) real part of complex conjugate eigenvectors
-	  !0.0, 0.0,&  !PAR(23:24) strong unstable eigenvalue of startpoint and radius
-	  !1.5999826631956767179885167014501, 0.0,& !PAR(25:26) weak unstable eigenvalue and radius 
-	  !0.13339172174634352552632137932572, 0.048183092981327620190914515143416, 0.0,& !PAR(27:29) imaginary part of complex conjugate eigenvectors
-	  !0.0, 0.0,& !PAR(30:31) strong stable eigenvalue and radius
-	  !0.0, 0.0, 0.0,&  !PAR(32:34) strong stable eigenvector of initial startpoint is not used
-	  !10.606801438770783490352775268692, 0.047916398397789360680124248762032, 0.00021770859363502248771163454388334 /) !PAR(35:37) variables used for releasing startpoint from unstable eigenvector in second step
-	  
-	  PAR(1:37)= (/ 0.1, 250.0, 0.035, 20.0, 5.35, 1E-4, 0.8, 0.1, 0.825,& !PAR(1:9) table 1 parameters
+	  PAR(1:37)= (/ 0.1, 250.0, 0.035, 20.0, 5.35, 1E-5, 0.8, 0.1, 0.825,& !PAR(1:9) table 1 parameters
 	  0.0, 0.0,& !PAR(10:11) PAR(11) is where AUTO stores the value of the period so we want to avoid it
-	  4.5061896805176323384727756760086, 0.29, 0.99301715444958109099407422960427, 0.42746887603328361760208663377664,& !PAR(12:15) initial endpoint
-	  4.5061896805176323384727756760086, 0.29, 0.99301715444958109099407422960427, 0.42746887603328361760208663377664,& !PAR(16:19) initial startpoint
-	  -0.088087775136734942290496943739116, 0.76997426705126931209497411969253, 0.63196532495883081505689389538914,& !PAR(20:22) strong unstable eigenvector
-	  9.160105657877419427176574427416, 0.0,&  !PAR(23:24) strong unstable eigenvalue of startpoint and radius
-	  0.11962652483774959679780890038609, 0.0,& !PAR(25:26) weak unstable eigenvalue and radius 
-	  0.94446596811088211746145172282912, -0.22232240034899249933270853365139, -0.24198509330832034330998279666784,& !PAR(27:29) weak unstable eigenvector
-	  0.0, 0.0,& !PAR(30:31) strong stable eigenvalue and radius
-	  0.0, 0.0, 0.0,&  !PAR(32:34) strong stable eigenvector of initial startpoint is not used
-	  0.0, 0.0, 0.0/) !PAR(35:37) variables used for releasing startpoint from unstable eigenvector in second step
+	  1.9788805938744591214490646144441, 0.45, 1.2943670588295220112627801603527, 0.88621496482816810457094286066201,& !PAR(12:15) initial startpoint
+	  1.9788805938744591214490646144441, 0.45, 1.2943670588295220112627801603527, 0.88621496482816810457094286066201,& !PAR(16:19) initial endpoint
+	  -0.054113704099610944296001741255979, 0.99849139466813268778285899059149, 0.0093081578363839335758060423184044,& !PAR(20:22) unstable eigenvector of initial startpoint
+	  1.5504068239584284429516954472173, 0.0,&  !PAR(23:24) unstable eigenvalue and radius
+	  -0.091187050327067803627843733524516, 0.0,& !PAR(25:26) weak stable eigenvalue and radius 
+	  -0.33346660064130737047731088355735, 0.52657049771917792536499935951078, 0.78199970408466783390660184501199,& !PAR(27:29) weak stable eigenvector of initial startpoint
+	  -746.65728903445486119436933678594, 0.0,& !PAR(30:31) strong stable eigenvalue and radius
+	  -0.13577820633870756410460892892982, 0.58428865940463036139575620763901, 0.80010689359271440375124350611793,&  !PAR(32:34) strong stable eigenvector of initial startpoint
+	  10.606801438770783490352775268692, 0.047916398397789360680124248762032, 0.00021770859363502248771163454388334 /) !PAR(35:37) variables used for releasing startpoint from unstable eigenvector in second step
 	  
 	  U(1)= PAR(12)
 	  U(2)= PAR(13)
@@ -111,13 +99,13 @@
 	  DOUBLE PRECISION k1, k2, k3, k4, k5, k6, k7, k8, kn7, M(3,3)
 	  INTEGER D
 	  
-	  !startpoint BCs
-	  FB(1)= U0(1) - (PAR(12) + PAR(24)*PAR(20) + PAR(26)*PAR(27))
-	  FB(2)= U0(2) - PAR(13)
-	  FB(3)= U0(3) - (PAR(14) + PAR(24)*PAR(21) + PAR(26)*PAR(28))
-	  FB(4)= U0(4) - (PAR(15) + PAR(24)*PAR(22) + PAR(26)*PAR(29))
-	  
 	  !endpoint BCs
+	  FB(1)= U0(1) - (PAR(12) + PAR(26)*PAR(27) + PAR(31)*PAR(32))
+	  FB(2)= U0(2) - PAR(13)
+	  FB(3)= U0(3) - (PAR(14) + PAR(26)*PAR(28) + PAR(31)*PAR(33))
+	  FB(4)= U0(4) - (PAR(15) + PAR(26)*PAR(29) + PAR(31)*PAR(34))
+	  
+	  !startpoint BCs
 	  FB(5)= U1(1) - PAR(16)
 	  FB(6)= U1(2) - PAR(17)
 	  FB(7)= U1(3) - PAR(18)

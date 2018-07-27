@@ -1,5 +1,5 @@
 unames = {1: 'a', 2:'b', 3:'x', 4:'y'}
-parnames = {11: 'Period', 24:'radius_re', 26:'radius_im'}
+parnames = {11: 'Period', 24:'radius'}
 NDIM = 4
 NBC = 8
 NINT = 0
