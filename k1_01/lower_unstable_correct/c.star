@@ -1,7 +1,7 @@
 unames = {1: 'a', 2:'b', 3:'x', 4:'y'}
 parnames = {11: 'Period', 24:'radius'}
 NDIM = 4
-NBC = 8
+NBC = 12
 NINT = 0
 NPAR = 38
 JAC = 0

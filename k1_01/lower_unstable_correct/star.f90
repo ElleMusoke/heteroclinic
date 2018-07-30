@@ -75,9 +75,9 @@
 	  1.5504068239584284429516954472173, 0.0,&  !PAR(23:24) unstable eigenvalue and radius
 	  -0.091187050327067803627843733524516, 0.0,& !PAR(25:26) weak stable eigenvalue and radius 
 	  -0.33346660064130737047731088355735, 0.52657049771917792536499935951078, 0.78199970408466783390660184501199,& !PAR(27:29) weak stable eigenvector of initial startpoint
-	  -746.65728903445486119436933678594, 0.0,& !PAR(30:31) strong stable eigenvalue and radius
+	  0.0, 0.0,& !PAR(30:31) endpoint distance from critical manifold and strong stable eigenvalue 
 	  -0.13577820633870756410460892892982, 0.58428865940463036139575620763901, 0.80010689359271440375124350611793,&  !PAR(32:34) strong stable eigenvector of initial startpoint
-	  10.606801438770783490352775268692, 0.047916398397789360680124248762032, 0.00021770859363502248771163454388334 /) !PAR(35:37) variables used for releasing startpoint from unstable eigenvector in second step
+	  1.9788805938744591214490646144441, 1.2943670588295220112627801603527, 0.88621496482816810457094286066201 /) !PAR(35:37) variables used for calculating critical manifold point at B=par(17)
 	  
 	  U(1)= PAR(12)
 	  U(2)= PAR(13)
@@ -110,6 +110,34 @@
 	  FB(6)= U1(2) - PAR(17)
 	  FB(7)= U1(3) - PAR(18)
 	  FB(8)= U1(4) - PAR(19)
+	  
+	  k1= PAR(1)
+	  k2= PAR(2)
+	  k3= PAR(3)
+	  k4= PAR(4)
+	  k5= PAR(5)
+	  k6= PAR(6)
+	  k7= PAR(7)
+	  kn7= PAR(8)
+	  k8= PAR(9)
+	  
+      mu= k7/k8
+      alpha= (k1*k5*kn7)/(k3*k8*sqrt(2*k2*k8))
+      epsilon_b= ((k1**2)*k5)/(2*k2*k3*k8)
+      kappa= (sqrt(2*k2*k8))/k5
+      epsilon_sq= (k3*k8)/(k1*k5)
+   	  zeta= k4/(sqrt(2*k2*k8))
+      delta= k6/k8
+	  
+	  a=par(35)
+	  b=par(17)
+	  x=par(36)
+	  y=par(37)
+	  
+      FB(9)= (mu - alpha*a - a*b*y) 
+      FB(10)= (b*x-x**2 + 3*a*b*y - zeta*x + delta)/(epsilon_sq)
+      FB(11)= kappa*(x**2 - y - a*b*y)/(epsilon_sq)
+	  FB(12)= SQRT((PAR(16)-PAR(35))**2 + (PAR(18)-PAR(36))**2 + (PAR(19)-PAR(37))**2) - PAR(30)
 	  
       END SUBROUTINE BCND
 
