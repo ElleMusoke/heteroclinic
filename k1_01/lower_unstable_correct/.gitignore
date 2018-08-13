@@ -6,3 +6,5 @@ try_this_one
 *.o
 first_attempt_pieces
 manifold_pieces_better
+slow
+unstable_default

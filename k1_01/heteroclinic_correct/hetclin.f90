@@ -80,10 +80,12 @@
 	  U(4)= PAR(43)
 	  
 	  !bottom orbit specific stuff
-	  PAR(56:63)= (/ 1.978881, 0.45, 1.294367, 0.886215, 1.978881, 0.45, 1.294367, 0.886215 /) !PAR(56:59), PAR(60:63) startpoint and endpoint for top orbit
-	  PAR(64:66)= (/ -0.333467, 0.526570,  0.782000 /) !weak unstable eigenvector of stpt
-	  PAR(67:69)= (/ -0.135778, 0.584289, 0.800107 /) !strong unstable eigenvector of stpt
+	  PAR(56:63)= (/ 0.940272, 0.7, 1.492271, 1.342954, 0.940272, 0.7, 1.492271, 1.342954 /) !PAR(56:59), PAR(60:63) startpoint and endpoint for top orbit
+	  PAR(64:66)= (/ -0.0537135, 0.473352, 0.872143 /) !real part of unstable complex conjugate eigenvectors of saddle equilibrium at B=0.7
+	  PAR(67:69)= (/ 0.0996318, 0.0499280, 0.0 /) !imaginary part of unstable complex conjugate eigenvectors of stable equilibrium at B=0.7
 	  PAR(70:71)= (/ 0.0, 0.0 /) !real and imaginary radius
+	  PAR(103:105)= (/ 0.940272, 1.492271, 1.342954 /) !point on critical manifold corresponding to bottom endpoint B-coordinate
+	  PAR(106)= 0.0 !distance of bottom orbit endpoint from critical manifold
 	  
 	  U(5)= PAR(56)
 	  U(6)= PAR(57)
@@ -101,7 +103,6 @@
 	  PAR(79)= -(U(3)-U(7))/SQRT((U(3)-U(7))**2+(U(4)-U(8))**2)
 	  
 	  !second vector orthogonal to Lin vector
-	  
 	  PAR(80)= (U(4)-U(8))/SQRT((U(2)-U(6))**2+(U(4)-U(8))**2)
 	  PAR(81)= 0
 	  PAR(82)= -(U(2)-U(6))/SQRT((U(2)-U(6))**2+(U(4)-U(8))**2)
@@ -109,8 +110,8 @@
 	  !Distance between endpt of bottom orbit and stpt of top orbit along Lin vector
 	  PAR(100)= DOT_PRODUCT(PAR(73:75), (/ (U(2)-U(6)), (U(3)-U(7)), (U(4)-U(8)) /)) 
 	  
-	  !Total integration time
-	  PAR(101)= PAR(12)-PAR(11)
+	  !used to keep A coordinates closed in fold steps
+	  PAR(102)= PAR(60)-PAR(44)
 	  
       END SUBROUTINE STPNT
 !---------------------------------------------------------------------- 
@@ -123,8 +124,7 @@
       DOUBLE PRECISION, INTENT(OUT) :: FB(NBC)
       DOUBLE PRECISION, INTENT(INOUT) :: DBC(NBC,*)
 	  
-	  DOUBLE PRECISION a, b, x, y, alpha, mu, kappa, zeta, epsilon_sq, epsilon_b, delta 
-	  DOUBLE PRECISION k1, k2, k3, k4, k5, k6, k7, k8, kn7, eta
+	  DOUBLE PRECISION a, b, x, y, alpha, mu, kappa, zeta, epsilon_sq, epsilon_b, delta, k1, k2, k3, k4, k5, k6,k7,k8,kn7
 	  INTEGER D
 	  
 	  !top orbit
@@ -157,26 +157,51 @@
 	  
 	  !distance between endpoints to be closed in last step
 	  FB(19)= DOT_PRODUCT(PAR(73:75), (/ (U1(2)-U1(6)), (U1(3)-U1(7)), (U1(4)-U1(8)) /)) - PAR(100)
-	  !total integration time
-	  FB(20)= (PAR(12)-PAR(11)) - PAR(101)
+	 
+	  IF(NBC==19) RETURN	  
 	  
-	  IF(NBC==20) RETURN
-	  
-	  FB(21)= DOT_PRODUCT(PAR(77:79), PAR(77:79))-1.0
-	  FB(22)= DOT_PRODUCT(PAR(80:82), PAR(80:82))-1.0
+	  FB(20)= DOT_PRODUCT(PAR(77:79), PAR(77:79))-1.0
+	  FB(21)= DOT_PRODUCT(PAR(80:82), PAR(80:82))-1.0
 	  
 	  !Lin vector
-	  FB(23)= (U1(2)-U1(6))/SQRT((U1(2)-U1(6))**2+(U1(3)-U1(7))**2+(U1(4)-U1(8))**2)-PAR(73)
-	  FB(24)= (U1(3)-U1(7))/SQRT((U1(2)-U1(6))**2+(U1(3)-U1(7))**2+(U1(4)-U1(8))**2)-PAR(74)
-	  FB(25)= (U1(4)-U1(8))/SQRT((U1(2)-U1(6))**2+(U1(3)-U1(7))**2+(U1(4)-U1(8))**2)-PAR(75)
+	  FB(22)= (U1(2)-U1(6))/SQRT((U1(2)-U1(6))**2+(U1(3)-U1(7))**2+(U1(4)-U1(8))**2)-PAR(73)
+	  FB(23)= (U1(3)-U1(7))/SQRT((U1(2)-U1(6))**2+(U1(3)-U1(7))**2+(U1(4)-U1(8))**2)-PAR(74)
+	  FB(24)= (U1(4)-U1(8))/SQRT((U1(2)-U1(6))**2+(U1(3)-U1(7))**2+(U1(4)-U1(8))**2)-PAR(75)
 	  
+	  IF(NBC==24) RETURN
 	  
-	  !other normal vector obtained by taking the cross product of the Lin vector with the first normal vector
-	  !FB(23)= (PAR(74)*PAR(79)-PAR(75)*PAR(78))-PAR(80)
-	  !FB(24)= -(PAR(73)*PAR(79)-PAR(75)*PAR(77))-PAR(81)
-	  !FB(25)= (PAR(73)*PAR(78)-PAR(74)*PAR(77))-PAR(82)
+	  a=par(103)
+	  b=par(61)
+	  x=par(104)
+	  y=par(105)
 	  
-	  !FB(26)= DOT_PRODUCT( (/ (U1(2)-U1(6)), (U1(3)-U1(7)), (U1(4)-U1(8)) /), PAR(80:82) )
+	  k1= PAR(1)
+	  k2= PAR(2)
+	  k3= PAR(3)
+	  k4= PAR(4)
+	  k5= PAR(5)
+	  k6= PAR(6)
+	  k7= PAR(7)
+	  kn7= PAR(8)
+	  k8= PAR(9)
+  
+	  mu= k7/k8
+	  alpha= (k1*k5*kn7)/(k3*k8*sqrt(2*k2*k8))
+	  epsilon_b= ((k1**2)*k5)/(2*k2*k3*k8)
+	  kappa= (sqrt(2*k2*k8))/k5
+	  epsilon_sq= (k3*k8)/(k1*k5)
+	  zeta= k4/(sqrt(2*k2*k8))
+	  delta= k6/k8
+	  
+      FB(25)= (mu - alpha*a - a*b*y) 
+      FB(26)= (b*x-x**2 + 3*a*b*y - zeta*x + delta)/(epsilon_sq)
+      FB(27)= kappa*(x**2 - y - a*b*y)/(epsilon_sq)
+	  FB(28)= SQRT((PAR(60)-PAR(103))**2 + (PAR(62)-PAR(104))**2 + (PAR(63)-PAR(105))**2) - PAR(106)
+	  
+	  IF(NBC==28) RETURN
+	  
+	  !difference in A coordinates
+	  FB(29)= (PAR(60)-PAR(44)) - PAR(102)	  
 	  
       END SUBROUTINE BCND
 

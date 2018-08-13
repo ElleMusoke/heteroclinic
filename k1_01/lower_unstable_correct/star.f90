@@ -74,9 +74,9 @@
 	  -0.054113704099610944296001741255979, 0.99849139466813268778285899059149, 0.0093081578363839335758060423184044,& !PAR(20:22) unstable eigenvector of initial startpoint
 	  1.5504068239584284429516954472173, 0.0,&  !PAR(23:24) unstable eigenvalue and radius
 	  -0.091187050327067803627843733524516, 0.0,& !PAR(25:26) weak stable eigenvalue and radius 
-	  -0.33346660064130737047731088355735, 0.52657049771917792536499935951078, 0.78199970408466783390660184501199,& !PAR(27:29) weak stable eigenvector of initial startpoint
+	  -0.011211818432872038965587658564287, 0.39824414812279140205310829299592, 0.91293964848911666828060495099721,& !PAR(27:29) real part of complex conjugate eigenvectors at B=1.0
 	  0.0, 0.0,& !PAR(30:31) endpoint distance from critical manifold and strong stable eigenvalue 
-	  -0.13577820633870756410460892892982, 0.58428865940463036139575620763901, 0.80010689359271440375124350611793,&  !PAR(32:34) strong stable eigenvector of initial startpoint
+	  0.062886441806928741380634630417762, 0.062148107507890817286011812982674, 0.0,&  !PAR(32:34) imaginary part of complex conjugate eigenvectors at B=1.0
 	  1.9788805938744591214490646144441, 1.2943670588295220112627801603527, 0.88621496482816810457094286066201 /) !PAR(35:37) variables used for calculating critical manifold point at B=par(17)
 	  
 	  U(1)= PAR(12)
@@ -99,13 +99,13 @@
 	  DOUBLE PRECISION k1, k2, k3, k4, k5, k6, k7, k8, kn7, M(3,3)
 	  INTEGER D
 	  
-	  !endpoint BCs
+	  !startpoint BCs
 	  FB(1)= U0(1) - (PAR(12) + PAR(26)*PAR(27) + PAR(31)*PAR(32))
 	  FB(2)= U0(2) - PAR(13)
 	  FB(3)= U0(3) - (PAR(14) + PAR(26)*PAR(28) + PAR(31)*PAR(33))
 	  FB(4)= U0(4) - (PAR(15) + PAR(26)*PAR(29) + PAR(31)*PAR(34))
 	  
-	  !startpoint BCs
+	  !endpoint BCs
 	  FB(5)= U1(1) - PAR(16)
 	  FB(6)= U1(2) - PAR(17)
 	  FB(7)= U1(3) - PAR(18)
