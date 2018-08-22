@@ -158,18 +158,24 @@
 	  
 	  !distance between endpoints to be closed in last step
 	  FB(19)= DOT_PRODUCT(PAR(73:75), (/ (U1(2)-U1(6)), (U1(3)-U1(7)), (U1(4)-U1(8)) /)) - PAR(100)
-	 
-	  IF(NBC==19) RETURN	  
 	  
-	  FB(20)= DOT_PRODUCT(PAR(77:79), PAR(77:79))-1.0
-	  FB(21)= DOT_PRODUCT(PAR(80:82), PAR(80:82))-1.0
+	  !distance of bottom endpoint from critical
+	  FB(20)= SQRT((PAR(60)-PAR(103))**2 + (PAR(61)-PAR(104))**2 + (PAR(62)-PAR(105))**2 + (PAR(63)-PAR(106))**2) - PAR(107)
+	  
+	  !distance of top startpoint to point on critical manifold corresponding to bottom endpoint
+	  FB(21)= SQRT((PAR(44)-PAR(103))**2 + (PAR(45)-PAR(104))**2 + (PAR(46)-PAR(105))**2 + (PAR(47)-PAR(106))**2) - PAR(102)
+	  
+	  IF(NBC==21) RETURN
 	  
 	  !Lin vector
 	  FB(22)= (U1(2)-U1(6))/SQRT((U1(2)-U1(6))**2+(U1(3)-U1(7))**2+(U1(4)-U1(8))**2)-PAR(73)
 	  FB(23)= (U1(3)-U1(7))/SQRT((U1(2)-U1(6))**2+(U1(3)-U1(7))**2+(U1(4)-U1(8))**2)-PAR(74)
 	  FB(24)= (U1(4)-U1(8))/SQRT((U1(2)-U1(6))**2+(U1(3)-U1(7))**2+(U1(4)-U1(8))**2)-PAR(75)
 	  
-	  IF(NBC==24) RETURN
+	  FB(25)= DOT_PRODUCT(PAR(77:79), PAR(77:79))-1.0
+	  FB(26)= DOT_PRODUCT(PAR(80:82), PAR(80:82))-1.0
+	  
+	  IF(NBC==26) RETURN
 	  
 	  a=par(103)
 	  b=par(104)
@@ -194,20 +200,12 @@
 	  zeta= k4/(sqrt(2*k2*k8))
 	  delta= k6/k8
 	  
-      FB(25)= (mu - alpha*a - a*b*y) 
-      FB(26)= (b*x-x**2 + 3*a*b*y - zeta*x + delta)/(epsilon_sq)
-      FB(27)= kappa*(x**2 - y - a*b*y)/(epsilon_sq)
+      FB(27)= (mu - alpha*a - a*b*y) 
+      FB(28)= (b*x-x**2 + 3*a*b*y - zeta*x + delta)/(epsilon_sq)
+      FB(29)= kappa*(x**2 - y - a*b*y)/(epsilon_sq)
 	  
-	  !distance of bottom endpoint from critical
-	  FB(28)= SQRT((PAR(60)-PAR(103))**2 + (PAR(61)-PAR(104))**2 + (PAR(62)-PAR(105))**2 + (PAR(63)-PAR(106))**2) - PAR(107)
-	  
-	  !IF(NBC==28) RETURN
-	  
-	  !used for keeping freeing up the bottom B endpoint from the defining sphere of the 3D leaf
-	  FB(29)= (PAR(61)-PAR(104))-PAR(108)
-	  
-	  !distance of top startpoint to point on critical manifold corresponding to bottom endpoint
-	  FB(30)= SQRT((PAR(44)-PAR(103))**2 + (PAR(45)-PAR(104))**2 + (PAR(46)-PAR(105))**2 + (PAR(47)-PAR(106))**2) - PAR(102)
+	  !used for freeing up the bottom B endpoint from the defining sphere of the 3D leaf
+	  FB(30)= (PAR(61)-PAR(104))
 	  
       END SUBROUTINE BCND
 
