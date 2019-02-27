@@ -1,8 +1,11 @@
-{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf600
 {\fonttbl\f0\fnil\fcharset0 AndaleMono;}
-{\colortbl;\red255\green255\blue255;\red47\green255\blue18;}
-\paperw11900\paperh16840\margl1440\margr1440\vieww15260\viewh4400\viewkind0
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+{\colortbl;\red255\green255\blue255;\red47\green255\blue18;\red47\green255\blue18;\red0\green0\blue0;
+}
+{\*\expandedcolortbl;;\csgenericrgb\c18431\c100000\c7059;\cssrgb\c15686\c99608\c7843;\csgray\c0\c90000;
+}
+\paperw11900\paperh16840\margl1440\margr1440\vieww38900\viewh5020\viewkind0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 
 \f0\fs32 \cf2 \cb0 \CocoaLigature0 r0 = r(e='star', c='star', ICP=[11,17,30,18,26,31,35,36,37], UZSTOP=\{30:0.7\})\
 \
@@ -12,7 +15,8 @@ r2 = r(r1('UZ1'), ICP=[11,19,18,16,26,31,35,36,37], SP=['LP1'])\
 \
 r3 = r(r2('LP1'), ICP=[11,16,19,18,26,31,35,36,37,17], ISW=2, SP=['LP0'])\
 \
-r4 = r(r3, UZSTOP=\{17:[0.78,0.35]\}, DS='-', NPR=1)\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf3 \cb4 r4 = r(r3, UZSTOP=\{17:[0.78,0.35]\}, NPR=1)\cf2 \cb0 \
 \
 #move it move it\
 \
@@ -23,5 +27,266 @@ r2 = r(moov('UZ1'), ICP=[11,19,18,16,26,31,35,36,37], SP=['LP1'], UZSTOP=\{\})\
 r3 = r(r2('LP1'), ICP=[11,16,19,18,26,31,35,36,37,17], ISW=2, SP=['LP0'])\
 \
 r4 = r(r3, UZSTOP=\{17:[0.78,0.35]\}, DS='-', NPR=1)\
+\
+#A5 Y01\
+\
+\cf3 \cb4 r0 = r(e='old_school', c='star', ICP=[11,13,30,18,26,31,35,36,37], UZSTOP=\{13:0.9\})\cf2 \cb0 \
+\
+\cf3 \cb4 r1 = r(r0('UZ1'), ICP=[16,11,30,18,26,31,35,36,37], UZSTOP=\{16:5.0\})\
+\
+r2 = r(r1('UZ1'), ICP=[19,11,30,18,26,31,35,36,37], UZSTOP=\{19:0.1\}, DS='-')\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf2 \cb0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf3 \cb4 r3 = r(r2('UZ1'), ICP=[17,11,30,18,26,31,35,36,37], UZSTOP=\{17:0.86\}, DS='-')\
+\
+r3 = rl(r3)\cf2 \cb0 \
+\
+\cf3 \cb4 save(r3,'r3')\
+\
+shell('mkdir A5_Y01')\
+\
+shell('autox to_matlab.py r3 ./A5_Y01/A5_Y01')\
+\
+#A5 Y009\
+r0 = r(e='old_school', c='star', ICP=[11,13,30,18,26,31,35,36,37], UZSTOP=\{13:0.9\})\cf2 \cb0 \
+\
+\cf3 \cb4 r1 = r(r0('UZ1'), ICP=[16,11,30,18,26,31,35,36,37], UZSTOP=\{16:5.0\})\
+\
+r2 = r(r1('UZ1'), ICP=[19,11,30,18,26,31,35,36,37], UZSTOP=\{19:0.09\}, DS='-')\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf2 \cb0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf3 \cb4 r3 = r(r2('UZ1'), ICP=[17,11,30,18,26,31,35,36,37], UZSTOP=\{17:0.86\}, DS='-')\
+\
+r3 = rl(r3)\cf2 \cb0 \
+\
+\cf3 \cb4 save(r3,'r3')\
+\
+shell('mkdir A5_Y009')\
+\
+shell('autox to_matlab.py r3 ./A5_Y009/A5_Y009')\
+\
+#A5 Y008\
+r0 = r(e='old_school', c='star', ICP=[11,13,30,18,26,31,35,36,37], UZSTOP=\{13:0.9\})\cf2 \cb0 \
+\
+\cf3 \cb4 r1 = r(r0('UZ1'), ICP=[16,11,30,18,26,31,35,36,37], UZSTOP=\{16:5.0\})\
+\
+r2 = r(r1('UZ1'), ICP=[19,11,30,18,26,31,35,36,37], UZSTOP=\{19:0.08\}, DS='-')\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf2 \cb0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf3 \cb4 r3 = r(r2('UZ1'), ICP=[17,11,30,18,26,31,35,36,37], UZSTOP=\{17:0.86\}, DS='-')\
+\
+r3 = rl(r3)\cf2 \cb0 \
+\
+\cf3 \cb4 save(r3,'r3')\
+\
+shell('mkdir A5_Y008')\
+\
+shell('autox to_matlab.py r3 ./A5_Y008/A5_Y008')\
+\
+#A5 Y007\
+r0 = r(e='old_school', c='star', ICP=[11,13,30,18,26,31,35,36,37], UZSTOP=\{13:0.9\})\cf2 \cb0 \
+\
+\cf3 \cb4 r1 = r(r0('UZ1'), ICP=[16,11,30,18,26,31,35,36,37], UZSTOP=\{16:5.0\})\
+\
+r2 = r(r1('UZ1'), ICP=[19,11,30,18,26,31,35,36,37], UZSTOP=\{19:0.07\}, DS='-')\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf2 \cb0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf3 \cb4 r3 = r(r2('UZ1'), ICP=[17,11,30,18,26,31,35,36,37], UZSTOP=\{17:0.86\}, DS='-')\
+\
+r3 = rl(r3)\cf2 \cb0 \
+\
+\cf3 \cb4 save(r3,'r3')\
+\
+shell('mkdir A5_Y007')\
+\
+shell('autox to_matlab.py r3 ./A5_Y007/A5_Y007')\cf2 \cb0 \
+\
+\
+\
+\cf3 \cb4 #A5 Y006\
+r0 = r(e='old_school', c='star', ICP=[11,13,30,18,26,31,35,36,37], UZSTOP=\{13:0.9\})\cf2 \cb0 \
+\
+\cf3 \cb4 r1 = r(r0('UZ1'), ICP=[16,11,30,18,26,31,35,36,37], UZSTOP=\{16:5.0\})\
+\
+r2 = r(r1('UZ1'), ICP=[19,11,30,18,26,31,35,36,37], UZSTOP=\{19:0.06\}, DS='-')\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf2 \cb0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf3 \cb4 r3 = r(r2('UZ1'), ICP=[17,11,30,18,26,31,35,36,37], UZSTOP=\{17:0.86\}, DS='-')\
+\
+r3 = rl(r3)\cf2 \cb0 \
+\
+\cf3 \cb4 save(r3,'r3')\
+\
+shell('mkdir A5_Y006')\
+\
+shell('autox to_matlab.py r3 ./A5_Y006/A5_Y006')\
+\
+#A5 Y005\
+r0 = r(e='old_school', c='star', ICP=[11,13,30,18,26,31,35,36,37], UZSTOP=\{13:0.9\})\cf2 \cb0 \
+\
+\cf3 \cb4 r1 = r(r0('UZ1'), ICP=[16,11,30,18,26,31,35,36,37], UZSTOP=\{16:5.0\})\
+\
+r2 = r(r1('UZ1'), ICP=[19,11,30,18,26,31,35,36,37], UZSTOP=\{19:0.05\}, DS='-')\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf2 \cb0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf3 \cb4 r3 = r(r2('UZ1'), ICP=[17,11,30,18,26,31,35,36,37], UZSTOP=\{17:0.86\}, DS='-')\
+\
+r3 = rl(r3)\cf2 \cb0 \
+\
+\cf3 \cb4 save(r3,'r3')\
+\
+shell('mkdir A5_Y005')\
+\
+shell('autox to_matlab.py r3 ./A5_Y005/A5_Y005')\cf2 \cb0 \
+\
+\
+\
+\
+\cf3 \cb4 #A5 Y004\
+r0 = r(e='old_school', c='star', ICP=[11,13,30,18,26,31,35,36,37], UZSTOP=\{13:0.9\})\cf2 \cb0 \
+\
+\cf3 \cb4 r1 = r(r0('UZ1'), ICP=[16,11,30,18,26,31,35,36,37], UZSTOP=\{16:5.0\})\
+\
+r2 = r(r1('UZ1'), ICP=[19,11,30,18,26,31,35,36,37], UZSTOP=\{19:0.04\}, DS='-')\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf2 \cb0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf3 \cb4 r3 = r(r2('UZ1'), ICP=[17,11,30,18,26,31,35,36,37], UZSTOP=\{17:0.86\}, DS='-')\
+\
+r3 = rl(r3)\cf2 \cb0 \
+\
+\cf3 \cb4 save(r3,'r3')\
+\
+shell('mkdir A5_Y004')\
+\
+shell('autox to_matlab.py r3 ./A5_Y004/A5_Y004')\
+\
+#A5 Y003\
+r0 = r(e='old_school', c='star', ICP=[11,13,30,18,26,31,35,36,37], UZSTOP=\{13:0.9\})\cf2 \cb0 \
+\
+\cf3 \cb4 r1 = r(r0('UZ1'), ICP=[16,11,30,18,26,31,35,36,37], UZSTOP=\{16:5.0\})\
+\
+r2 = r(r1('UZ1'), ICP=[19,11,30,18,26,31,35,36,37], UZSTOP=\{19:0.03\}, DS='-')\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf2 \cb0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf3 \cb4 r3 = r(r2('UZ1'), ICP=[17,11,30,18,26,31,35,36,37], UZSTOP=\{17:0.86\}, DS='-')\
+\
+r3 = rl(r3)\cf2 \cb0 \
+\
+\cf3 \cb4 save(r3,'r3')\
+\
+shell('mkdir A5_Y003')\
+\
+shell('autox to_matlab.py r3 ./A5_Y003/A5_Y003')\cf2 \cb0 \
+\
+\
+\
+\cf3 \cb4 #A5 Y002\
+r0 = r(e='old_school', c='star', ICP=[11,13,30,18,26,31,35,36,37], UZSTOP=\{13:0.9\})\cf2 \cb0 \
+\
+\cf3 \cb4 r1 = r(r0('UZ1'), ICP=[16,11,30,18,26,31,35,36,37], UZSTOP=\{16:5.0\})\
+\
+r2 = r(r1('UZ1'), ICP=[19,11,30,18,26,31,35,36,37], UZSTOP=\{19:0.02\}, DS='-')\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf2 \cb0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf3 \cb4 r3 = r(r2('UZ1'), ICP=[17,11,30,18,26,31,35,36,37], UZSTOP=\{17:0.86\}, DS='-')\
+\
+r3 = rl(r3)\cf2 \cb0 \
+\
+\cf3 \cb4 save(r3,'r3')\
+\
+shell('mkdir A5_Y002')\
+\
+shell('autox to_matlab.py r3 ./A5_Y002/A5_Y002\'92)\
+\
+#A5 Y001\
+r0 = r(e='old_school', c='star', ICP=[11,13,30,18,26,31,35,36,37], UZSTOP=\{13:0.9\})\cf2 \cb0 \
+\
+\cf3 \cb4 r1 = r(r0('UZ1'), ICP=[16,11,30,18,26,31,35,36,37], UZSTOP=\{16:5.0\})\
+\
+r2 = r(r1('UZ1'), ICP=[19,11,30,18,26,31,35,36,37], UZSTOP=\{19:0.01\}, DS='-')\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf2 \cb0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf3 \cb4 r3 = r(r2('UZ1'), ICP=[17,11,30,18,26,31,35,36,37], UZSTOP=\{17:0.86\}, DS='-')\
+\
+r3 = rl(r3)\cf2 \cb0 \
+\
+\cf3 \cb4 save(r3,'r3')\
+\
+shell('mkdir A5_Y001')\
+\
+shell('autox to_matlab.py r3 ./A5_Y001/A5_Y001')\
+\
+\
+\
+#A=1.4 Y=0.01 Looking to see how close to zero we can get Y.\
+\
+r0 = r(e='old_school', c='star', ICP=[11,13,30,18,26,31,35,36,37], UZSTOP=\{13:0.9\})\
+r1 = r(r0('UZ1'), ICP=[16,11,30,18,26,31,35,36,37], UZSTOP=\{16:1.4\})\
+r2 = r(r1('UZ1'), ICP=[19,11,30,18,26,31,35,36,37], UZSTOP=\{19:0.0\}, DS='-', SP=['LP1'])\
+r3 = r(r2('LP1'), ICP=[19,11,30,18,26,31,35,36,37,17], UZSTOP=\{17:0.9\}, DS='-', SP=['LP1'], ISW=2)\
+r4=r(r3)\
+\
+#A=1.4 Y=lowest possible (right hand side)\
+r0 = r(e='old_school', c='star', ICP=[11,13,30,18,26,31,35,36,37], UZSTOP=\{13:0.9\})\
+extra_step = r(r0, ICP=[17,11,30,18,26,31,35,36,37], UZSTOP=\{17:0.8333\})\
+r1 = r(extra_step('UZ1'), ICP=[16,11,30,18,26,31,35,36,37], UZSTOP=\{16:1.4\})\
+r2 = r(r1('UZ1'), ICP=[19,11,30,18,26,31,35,36,37], UZSTOP=\{19:0.0\}, DS='-', SP=['LP1'])\
+r3 = r(r2('LP1'), ICP=[19,11,30,18,26,31,35,36,37,17], UZSTOP=\{17:0.86\}, DS='-', SP=['LP1'], ISW=2)\
+r4=r(r3, NPR=100)\
+r4=rl(r4)\
+save(r4,'r4')\
+\
+\
+#A=1.4 Looking to see how close to zero we can get X.\
+\
+r0 = r(e='old_school', c='star', ICP=[11,13,30,18,26,31,35,36,37], UZSTOP=\{13:0.9\})\
+r1 = r(r0('UZ1'), ICP=[16,11,30,18,26,31,35,36,37], UZSTOP=\{16:1.4\})\
+r2 = r(r1('UZ1'), ICP=[18,11,30,19,26,31,35,36,37], UZSTOP=\{18:0.0\}, DS='-', SP=['LP1'], NPR=100)\
+r3 = r(r2('LP1'), ICP=[19,11,30,18,26,31,35,36,37,17], UZSTOP=\{17:0.9\}, DS='-', SP=['LP1'], ISW=2)\
+r4=r(r3)\
+\
+#A=1.4 X smallest\
+r0 = r(e='old_school', c='star', ICP=[11,13,30,18,26,31,35,36,37], UZSTOP=\{13:0.9\})\
+extra_step = r(r0, ICP=[17,11,30,18,26,31,35,36,37], UZSTOP=\{17:0.8133\})\
+r1 = r(extra_step('UZ1'), ICP=[16,11,30,18,26,31,35,36,37], UZSTOP=\{16:1.4\})\
+r2 = r(r1('UZ1'), ICP=[18,11,30,19,26,31,35,36,37], UZSTOP=\{19:0.0\}, DS='-', SP=['LP1'])\
+r3 = r(r2('LP1'), ICP=[17,19,11,30,18,26,31,35,36,37], UZSTOP=\{17:0.86\}, DS='-', SP=['LP1'], ISW=2)\
+r4=r(r3, NPR=100)\
+r4=rl(r4)\
+save(r4,'r4')\
+\
+\
+\
+#A=1.4 B=0.8 Looking to see how close to zero we can get Y.\
+\
+r0 = r(e='old_school', c='star', ICP=[11,13,30,18,26,31,35,36,37], UZSTOP=\{13:0.9\})\
+extra_step = r(r0('UZ1'), ICP=[11,17,30,18,26,31,35,36,37], UZSTOP=\{17:0.835\}, DS='-')\
+r1 = r(extra_step('UZ1'), ICP=[16,11,30,18,26,31,35,36,37], UZSTOP=\{16:1.4\}, DS='-')\
+r2 = r(r1('UZ1'), ICP=[19,11,30,18,26,31,35,36,37], UZSTOP=\{19:1.01E-3\}, DS='-', SP=['LP1'])\
+r3 = r(r2('LP1'), ICP=[19,11,30,18,26,31,35,36,37,17], UZSTOP=\{17:0.9\}, DS='-', SP=['LP1'])\
+r4=r(r3)\
+\
+#Trying to get a good intersection surface\
+\
+r0 = r(e='old_school', c='star', ICP=[11,13,30,18,26,31,35,36,37], UZSTOP=\{13:0.9\})\
+extra_step = r(r0, ICP=[17,11,30,18,26,31,35,36,37], UZSTOP=\{17:0.81\})\
+r1 = r(extra_step('UZ1'), ICP=[16,11,30,18,26,31,35,36,37], UZSTOP=\{16:1.4\})\
+\
+r2 = r(r1('UZ1'), ICP=[18,11,30,19,26,31,35,36,37], UZSTOP=\{18:0.25\}, SP=['LP1'], DS='-')\
+r3 = r(r2('UZ1'), ICP=[17,11,30,19,26,31,35,36,37], UZSTOP=\{17:0.86\}, SP=['LP2'], DS='-')\
+r3 = rl(r3)\
+save(r3,'r3')\
+shell('mkdir A14_X025')\
+shell('autox to_matlab.py r3 ./A14_X025/A14_X025')\
 \
 }

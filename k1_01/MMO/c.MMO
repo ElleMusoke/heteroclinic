@@ -6,4 +6,3 @@ NMX=  16000, NPR = 1, MXBF=   0, IID =   2, ITMX= 8, ITNW= 5, NWTN= 3, JAC= 0
 EPSL= 1e-07, EPSU = 1e-07, EPSS =1e-05
 DS  =  0.015, DSMIN= 0.0001, DSMAX= 0.5, IADS=   1
 NPAR = 29, THL =  {11:0.0}, THU =  {1:0.0, 3:0.0, 4:0.0}
-UZSTOP = {'k_5': [0.001, 26.0]}

@@ -1,21 +1,26 @@
-{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf600
 {\fonttbl\f0\fnil\fcharset0 AndaleMono;}
 {\colortbl;\red255\green255\blue255;\red71\green204\blue252;\red47\green255\blue18;\red255\green255\blue51;
-\red255\green249\blue89;}
-\paperw11900\paperh16840\margl1440\margr1440\vieww29680\viewh26140\viewkind0
-\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\red255\green249\blue89;\red47\green255\blue18;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\csgenericrgb\c27843\c80000\c98824;\csgenericrgb\c18431\c100000\c7059;\csgenericrgb\c100000\c100000\c20000;
+\csgenericrgb\c100000\c97647\c34902;\cssrgb\c15686\c99608\c7843;\csgray\c0\c90000;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww29680\viewh11220\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
 
 \f0\fs32 \cf0 \cb2 \CocoaLigature0 First Piece (Different startpoint values for A and Y)\cb1 \
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 \cf0 \
 First step is to increase period while keeping startpoint fixed in A and Y.  Allow endpoint to move in 2D section of the critical manifold\'92s linear stable space at B=0.9.  This gives two boundary conditions at either end.  Stop integration before start point B coordinate reaches the value of the nearby saddle equilibrium.  Stopping the integration here will prevent increasing periods due to orbits getting too close to the saddle in later steps.\
 \cf3 \
-\cb0 r0 = r(e='star', c='star', ICP=[11,26,31,17,18], UZSTOP=\{17:0.25\}, DS='-', NPR=10)\cf0 \cb1 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf3 \cb0 r0 = r(e='star', c='star', ICP=[11,26,31,17,18], UZSTOP=\{17:0.275\}, DS='-', NPR=10)\cf0 \cb1 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 \cf3 \
 \cf0 \
 Now the endpoint of the orbit is in the \cb4 A=10.6055 Y=2.300E-4\cb1  plane.  We\'92ll just keep it here this time, but change it in other computations.  Second step is to increase period allowing startpoint to move in x-direction.  Allow endpoint to move in 3D space spanned by the B basis vector and the two stable eigenvectors at B=0.9.  Stop at fold in period.  This trajectory will be the one that follows the slow manifold for the longest.\
 \
-\cf3 \cb0 r1 = r(r0('UZ1'), ICP=[11,26,31,13,18], SP=['LP1'], UZSTOP=\{17:0.23\}, NPR=10)\cf0 \cb1 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf3 \cb0 r1 = r(r0('UZ1'), ICP=[11,26,31,13,18], SP=['LP1'], NPR=10)\cf0 \cb1 \
 \
 Next change ISW to 2 and generate starting data.  It\'92s rumoured that this step just generates a more accurate approximation of the fold found in the last step.\
 \
@@ -23,7 +28,7 @@ Next change ISW to 2 and generate starting data.  It\'92s rumoured that this ste
 \
 Now we change period, and look for a value of B for which that period is a fold when one moves the X coordinate around.  We save the orbit that is on the fold.  The tails of r3 makes up a piece of the stable manifold.\
 \
-\cf3 \cb0 r3 = r(r2, ICP=[11,17,18,26,31,13], DS='-')\cf0 \cb1 \
+\cf3 \cb0 r3 = r(r2, DS='-')\cf0 \cb1 \
 \
 A subsection with start points in the \cb5 a=4.0, y=0.75\cb1  plane.\
 \
@@ -33,36 +38,44 @@ r3 = r(r2('UZ1'), ICP=[11,26,31,13,18], SP=['LP1'], UZSTOP=\{17:0.23\}, NPR=10, 
 r4 = r(r3('LP1'), ICP=[11,26,31,13,18,17], ISW=2, NPR=100, NMX=2000, SP=['LP0'])\
 r5 = r(r4, UZSTOP=\{17:0.3037\}, NPR=1)\
 r6 = r(r5, UZSTOP=\{17:0.8\}, DS='-', NPR=1)\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 \cf0 \cb1 \
 A subsection with start points in the \cb5 a=2.0, y=default\cb1  plane.\
 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 \cf3 \cb0 r0 = r(e='star', c='star', ICP=[11,26,31,17,18], UZSTOP=\{17:0.5\}, DS='-', NPR=10)\cf0 \cb1 \
 \cf3 \cb0 r1 = r(r0('UZ1'), ICP=[16,11,26,31,18], SP=['LP1'], UZSTOP=\{16:2.0\}, NPR=10)\
 r2 = r(r1('UZ1'), ICP=[11,26,31,13,18], SP=['LP1'], UZSTOP=\{17:0.23\}, NPR=10)\
 r3 = r(r2('LP1'), ICP=[11,26,31,13,18,17], ISW=2, NPR=100, NMX=2000, SP=['LP0'])\
 r4 = r(r3, UZSTOP=\{17:0.8\}, DS='-', NPR=1)\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 \cf0 \cb1 \
 A subsection with start points in the \cb5 a=6.0, y=0.5\cb1  plane.\
 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 \cf3 \cb0 r1 = r(r0('UZ1'), ICP=[16,11,26,31,17], SP=['LP1'], UZSTOP=\{16:6.0\}, NPR=10)\
 r2 = r(r1('UZ1'), ICP=[19,11,26,31,18], SP=['LP1'], UZSTOP=\{19:0.5\}, DS='-', NPR=10)\
 r3 = r(r2('UZ1'), ICP=[11,26,31,13,18], SP=['LP1'], UZSTOP=\{17:0.23\}, NPR=10, DS='-')\
 r4 = r(r3('LP1'), ICP=[11,26,31,13,18,17], ISW=2, NPR=100, NMX=2000, SP=['LP0'])\
 r5 = r(r4, UZSTOP=\{17:0.255\}, NPR=1)\
 r6 = r(r5, UZSTOP=\{17:0.8\}, DS='-', NPR=1)\
-\cb1 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf3 \cb1 \
 \
 \cf0 A subsection with start points in the \cb5 a=4.0, x=0.75\cb1  plane.\
 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 \cf3 \cb0 r0 = r(e='star', c='star', ICP=[11,26,31,17,18], UZSTOP=\{17:0.8\}, DS='-', NPR=10)\cf0 \
 \cf3 r1 = r(r0('UZ1'), ICP=[16,11,26,31,19], SP=['LP1'], UZSTOP=\{16:4.0\}, NPR=10)\
 r2 = r(r1('UZ1'), ICP=[18,11,26,31,19], SP=['LP1'], UZSTOP=\{18:0.75\}, DS='-', NPR=10)\
 r3 = r(r2('UZ1'), ICP=[11,26,31,13,19], SP=['LP1'], UZSTOP=\{17:0.23\}, NPR=10, DS='-')\
 r4 = r(r3('LP1'), ICP=[11,26,31,13,19,17], ISW=2, NPR=100, NMX=2000, SP=['LP0'])\
 r5 = r(r4, UZSTOP=\{17:0.35\}, NPR=1)\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 \cf0 \cb1 \
 A subsection with start points in the \cb5 a=6.0, x=0.5\cb1  plane.\
 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 \cf3 \cb0 r0 = r(e='star', c='star', ICP=[11,26,31,17,18], UZSTOP=\{17:0.4\}, DS='-', NPR=10)\cf0 \
 \cf3 r1 = r(r0('UZ1'), ICP=[16,11,26,31,19], SP=['LP1'], UZSTOP=\{16:6.0\}, NPR=10)\
 r2 = r(r1('UZ1'), ICP=[18,11,26,31,19], SP=['LP1'], UZSTOP=\{18:0.5\}, DS='-', NPR=10)\
@@ -70,5 +83,478 @@ r3 = r(r2('UZ1'), ICP=[11,26,31,13,19], SP=['LP1'], UZSTOP=\{17:0.23\}, NPR=10, 
 r4 = r(r3('LP1'), ICP=[11,26,31,13,17,19], ISW=2, NPR=100, NMX=2000, SP=['LP0'])\
 r5 = r(r4, UZSTOP=\{17:0.35\}, NPR=1)\
 r6 = r(r5, UZSTOP=\{17:0.8\}, DS='-', NPR=1)\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \cb1 \
+A subsection with start points in the \cb5 a=1.4, y=0.5\cb1  plane.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf6 \cb7 r0 = r(e='star', c='star', ICP=[11,26,31,17,18], UZSTOP=\{17:0.4\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r1 = r(r0('UZ1'), ICP=[16,11,26,31,17], SP=['LP1'], UZSTOP=\{16:1.4\}, NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r2 = r(r1('UZ1'), ICP=[19,11,26,31,18], SP=['LP1'], UZSTOP=\{19:0.5\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r3 = r(r2('UZ1'), ICP=[11,26,31,13,18], SP=['LP1'], UZSTOP=\{17:0.23\}, NPR=10, DS='-')\cf3 \cb0 \
+\cf6 \cb7 r4 = r(r3('LP1'), ICP=[17,11,26,31,18], SP=['LP1'], UZSTOP=\{17:0.86\}, NPR=10,DS='-')\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \cb1 \
+A subsection with start points in the \cb5 a=1.4, y=0.0003\cb1  plane.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf6 \cb7 r0 = r(e='star', c='star', ICP=[11,26,31,17,18], UZSTOP=\{17:0.4\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r1 = r(r0('UZ1'), ICP=[16,11,26,31,17], SP=['LP1'], UZSTOP=\{16:1.4\}, NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r2 = r(r1('UZ1'), ICP=[19,11,26,31,18], SP=['LP1'], UZSTOP=\{19:0.0003\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r3 = r(r2('UZ1'), ICP=[11,26,31,13,18], SP=['LP1'], UZSTOP=\{17:0.23\}, NPR=10, DS='-')\cf3 \cb0 \
+\cf6 \cb7 r4 = r(r3('LP1'), ICP=[17,11,26,31,18], SP=['LP1'], UZSTOP=\{17:0.86\}, NPR=1,DS='-')\cf3 \cb0 \
+\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \cb1 \
+A subsection with start points in the \cb5 a=1.4, y=0.0005\cb1  plane.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf6 \cb7 r0 = r(e='star', c='star', ICP=[11,26,31,17,18], UZSTOP=\{17:0.4\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r1 = r(r0('UZ1'), ICP=[16,11,26,31,17], SP=['LP1'], UZSTOP=\{16:1.4\}, NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r2 = r(r1('UZ1'), ICP=[19,11,26,31,18], SP=['LP1'], UZSTOP=\{19:0.0005\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r3 = r(r2('UZ1'), ICP=[11,26,31,13,18], SP=['LP1'], UZSTOP=\{17:0.23\}, NPR=10, DS='-')\cf3 \cb0 \
+\cf6 \cb7 r4 = r(r3('LP1'), ICP=[17,11,26,31,18], SP=['LP1'], UZSTOP=\{17:0.86\}, NPR=1,DS='-')\
+shell('mkdir A14_Y00005')\
+r4=rl(r4)\
+shell('autox to_matlab.py r4 ./A14_Y00005/A14_Y00005')\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \cb1 \
+A subsection with start points in the \cb5 a=1.4, y=0.0007\cb1  plane.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf6 \cb7 r0 = r(e='star', c='star', ICP=[11,26,31,17,18], UZSTOP=\{17:0.4\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r1 = r(r0('UZ1'), ICP=[16,11,26,31,17], SP=['LP1'], UZSTOP=\{16:1.4\}, NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r2 = r(r1('UZ1'), ICP=[19,11,26,31,18], SP=['LP1'], UZSTOP=\{19:0.0007\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r3 = r(r2('UZ1'), ICP=[11,26,31,13,18], SP=['LP1'], UZSTOP=\{17:0.23\}, NPR=10, DS='-')\cf3 \cb0 \
+\cf6 \cb7 r4 = r(r3('LP1'), ICP=[17,11,26,31,18], SP=['LP1'], UZSTOP=\{17:0.86\}, NPR=1,DS='-')\
+shell('mkdir A14_Y00007\'92)\
+r4=rl(r4)\
+save(r4,'r4')\
+shell('autox to_matlab.py r4 ./A14_Y00007/A14_Y00007')\cf3 \cb0 \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \cb1 \
+A subsection with start points in the \cb5 a=1.4, y=0.0009\cb1  plane.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf6 \cb7 r0 = r(e='star', c='star', ICP=[11,26,31,17,18], UZSTOP=\{17:0.4\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r1 = r(r0('UZ1'), ICP=[16,11,26,31,17], SP=['LP1'], UZSTOP=\{16:1.4\}, NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r2 = r(r1('UZ1'), ICP=[19,11,26,31,18], SP=['LP1'], UZSTOP=\{19:0.0009\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r3 = r(r2('UZ1'), ICP=[11,26,31,13,18], SP=['LP1'], UZSTOP=\{17:0.23\}, NPR=10, DS='-')\cf3 \cb0 \
+\cf6 \cb7 r4 = r(r3('LP1'), ICP=[17,11,26,31,18], SP=['LP1'], UZSTOP=\{17:0.86\}, NPR=1,DS='-')\
+shell('mkdir A14_Y00009')\
+r4=rl(r4)\
+save(r4,'r4')\
+shell('autox to_matlab.py r4 ./A14_Y00009/A14_Y00009')\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \cb1 \
+A subsection with start points in the \cb5 a=1.4, y=0.001\cb1  plane.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf6 \cb7 r0 = r(e='star', c='star', ICP=[11,26,31,17,18], UZSTOP=\{17:0.4\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r1 = r(r0('UZ1'), ICP=[16,11,26,31,17], SP=['LP1'], UZSTOP=\{16:1.4\}, NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r2 = r(r1('UZ1'), ICP=[19,11,26,31,18], SP=['LP1'], UZSTOP=\{19:0.001\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r3 = r(r2('UZ1'), ICP=[11,26,31,13,18], SP=['LP1'], UZSTOP=\{17:0.23\}, NPR=10, DS='-')\cf3 \cb0 \
+\cf6 \cb7 r4 = r(r3('LP1'), ICP=[17,11,26,31,18], SP=['LP1'], UZSTOP=\{17:0.86\}, NPR=1,DS='-')\
+shell('mkdir A14_Y0001')\
+r4=rl(r4)\
+save(r4,'r4')\
+shell('autox to_matlab.py r4 ./A14_Y0001/A14_Y0001')\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \cb1 \
+A subsection with start points in the \cb5 a=1.4, y=0.0011\cb1  plane.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf6 \cb7 r0 = r(e='star', c='star', ICP=[11,26,31,17,18], UZSTOP=\{17:0.4\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r1 = r(r0('UZ1'), ICP=[16,11,26,31,17], SP=['LP1'], UZSTOP=\{16:1.4\}, NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r2 = r(r1('UZ1'), ICP=[19,11,26,31,18], SP=['LP1'], UZSTOP=\{19:0.0011\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r3 = r(r2('UZ1'), ICP=[11,26,31,13,18], SP=['LP1'], UZSTOP=\{17:0.23\}, NPR=10, DS='-')\cf3 \cb0 \
+\cf6 \cb7 r4 = r(r3('LP1'), ICP=[17,11,26,31,18], SP=['LP1'], UZSTOP=\{17:0.86\}, NPR=1,DS='-')\
+shell('mkdir A14_Y00011')\
+r4=rl(r4)\
+save(r4,'r4')\
+shell('autox to_matlab.py r4 ./A14_Y00011/A14_Y00011')\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \cb1 \
+A subsection with start points in the \cb5 a=1.4, y=0.00115\cb1  plane.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf6 \cb7 r0 = r(e='star', c='star', ICP=[11,26,31,17,18], UZSTOP=\{17:0.4\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r1 = r(r0('UZ1'), ICP=[16,11,26,31,17], SP=['LP1'], UZSTOP=\{16:1.4\}, NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r2 = r(r1('UZ1'), ICP=[19,11,26,31,18], SP=['LP1'], UZSTOP=\{19:0.00115\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r3 = r(r2('UZ1'), ICP=[11,26,31,13,18], SP=['LP1'], UZSTOP=\{17:0.23\}, NPR=10, DS='-')\cf3 \cb0 \
+\cf6 \cb7 r4 = r(r3('LP1'), ICP=[17,11,26,31,18], SP=['LP1'], UZSTOP=\{17:0.86\}, NPR=1,DS='-')\
+shell('mkdir A14_Y000115')\
+r4=rl(r4)\
+save(r4,'r4')\
+shell('autox to_matlab.py r4 ./A14_Y000115/A14_Y000115')\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \cb1 A subsection with start points in the \cb5 a=1.4, y=0.00112\cb1  plane.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf6 \cb7 r0 = r(e='star', c='star', ICP=[11,26,31,17,18], UZSTOP=\{17:0.4\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r1 = r(r0('UZ1'), ICP=[16,11,26,31,17], SP=['LP1'], UZSTOP=\{16:1.4\}, NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r2 = r(r1('UZ1'), ICP=[19,11,26,31,18], SP=['LP1'], UZSTOP=\{19:0.00112\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r3 = r(r2('UZ1'), ICP=[11,26,31,13,18], SP=['LP1'], UZSTOP=\{17:0.23\}, NPR=10, DS='-')\cf3 \cb0 \
+\cf6 \cb7 r4 = r(r3('LP1'), ICP=[17,11,26,31,18], SP=['LP1'], UZSTOP=\{17:0.86\}, NPR=1,DS='-')\
+shell('mkdir A14_Y000112')\
+r4=rl(r4)\
+save(r4,'r4')\
+shell('autox to_matlab.py r4 ./A14_Y000112/A14_Y000112')\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \cb1 A subsection with start points in the \cb5 a=1.4, y=0.00122\cb1  plane.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf6 \cb7 r0 = r(e='star', c='star', ICP=[11,26,31,17,18], UZSTOP=\{17:0.4\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r1 = r(r0('UZ1'), ICP=[16,11,26,31,17], SP=['LP1'], UZSTOP=\{16:1.4\}, NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r2 = r(r1('UZ1'), ICP=[19,11,26,31,18], SP=['LP1'], UZSTOP=\{19:0.00122\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r3 = r(r2('UZ1'), ICP=[11,26,31,13,18], SP=['LP1'], UZSTOP=\{17:0.23\}, NPR=10, DS='-')\cf3 \cb0 \
+\cf6 \cb7 r4 = r(r3('LP1'), ICP=[17,11,26,31,18], SP=['LP1'], UZSTOP=\{17:0.86\}, NPR=1,DS='-')\
+shell('mkdir A14_Y000122')\
+r4=rl(r4)\
+save(r4,'r4')\
+shell('autox to_matlab.py r4 ./A14_Y000122/A14_Y000122')\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \cb1 A subsection with start points in the \cb5 a=1.4, y=0.00122\cb1  plane.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf6 \cb7 r0 = r(e='star', c='star', ICP=[11,26,31,17,18], UZSTOP=\{17:0.4\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r1 = r(r0('UZ1'), ICP=[16,11,26,31,17], SP=['LP1'], UZSTOP=\{16:1.4\}, NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r2 = r(r1('UZ1'), ICP=[19,11,26,31,18], SP=['LP1'], UZSTOP=\{19:0.00125\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r3 = r(r2('UZ1'), ICP=[11,26,31,13,18], SP=['LP1'], UZSTOP=\{17:0.23\}, NPR=10, DS='-')\cf3 \cb0 \
+\cf6 \cb7 r4 = r(r3('LP1'), ICP=[17,11,26,31,18], SP=['LP1'], UZSTOP=\{17:0.86\}, NPR=1,DS='-')\
+shell('mkdir A14_Y000125')\
+r4=rl(r4)\
+save(r4,'r4')\
+shell('autox to_matlab.py r4 ./A14_Y000125/A14_Y000125')\
+\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \cb1 A subsection with start points in the \cb5 a=1.4, y=0.45\cb1  plane.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf6 \cb7 r0 = r(e='star', c='star', ICP=[11,26,31,17,18], UZSTOP=\{17:0.4\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r1 = r(r0('UZ1'), ICP=[16,11,26,31,17], SP=['LP1'], UZSTOP=\{16:1.4\}, NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r2 = r(r1('UZ1'), ICP=[19,11,26,31,18], SP=['LP1'], UZSTOP=\{19:0.45\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r3 = r(r2('UZ1'), ICP=[11,26,31,13,18], SP=['LP1'], UZSTOP=\{17:0.23\}, NPR=10, DS='-')\cf3 \cb0 \
+\cf6 \cb7 r4 = r(r3('LP1'), ICP=[17,11,26,31,18], SP=['LP1'], UZSTOP=\{17:0.86\}, NPR=1,DS='-')\
+shell('mkdir A14_Y045')\
+r4=rl(r4)\
+save(r4,'r4')\
+shell('autox to_matlab.py r4 ./A14_Y045/A14_Y045')\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \cb1 A subsection with start points in the \cb5 a=1.4, y=0.4\cb1  plane.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf6 \cb7 r0 = r(e='star', c='star', ICP=[11,26,31,17,18], UZSTOP=\{17:0.4\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r1 = r(r0('UZ1'), ICP=[16,11,26,31,17], SP=['LP1'], UZSTOP=\{16:1.4\}, NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r2 = r(r1('UZ1'), ICP=[19,11,26,31,18], SP=['LP1'], UZSTOP=\{19:0.4\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r3 = r(r2('UZ1'), ICP=[11,26,31,13,18], SP=['LP1'], UZSTOP=\{17:0.23\}, NPR=10, DS='-')\cf3 \cb0 \
+\cf6 \cb7 r4 = r(r3('LP1'), ICP=[17,11,26,31,18], SP=['LP1'], UZSTOP=\{17:0.86\}, NPR=1,DS='-')\
+shell('mkdir A14_Y04')\
+r4=rl(r4)\
+save(r4,'r4')\
+shell('autox to_matlab.py r4 ./A14_Y04/A14_Y04')\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \cb1 A subsection with start points in the \cb5 a=1.4, y=0.35\cb1  plane.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf6 \cb7 r0 = r(e='star', c='star', ICP=[11,26,31,17,18], UZSTOP=\{17:0.4\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r1 = r(r0('UZ1'), ICP=[16,11,26,31,17], SP=['LP1'], UZSTOP=\{16:1.4\}, NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r2 = r(r1('UZ1'), ICP=[19,11,26,31,18], SP=['LP1'], UZSTOP=\{19:0.35\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r3 = r(r2('UZ1'), ICP=[11,26,31,13,18], SP=['LP1'], UZSTOP=\{17:0.23\}, NPR=10, DS='-')\cf3 \cb0 \
+\cf6 \cb7 r4 = r(r3('LP1'), ICP=[17,11,26,31,18], SP=['LP1'], UZSTOP=\{17:0.86\}, NPR=1,DS='-')\
+shell('mkdir A14_Y035')\
+r4=rl(r4)\
+save(r4,'r4')\
+shell('autox to_matlab.py r4 ./A14_Y035/A14_Y035')\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \cb1 A subsection with start points in the \cb5 a=1.4, y=0.3\cb1  plane.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf6 \cb7 r0 = r(e='star', c='star', ICP=[11,26,31,17,18], UZSTOP=\{17:0.4\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r1 = r(r0('UZ1'), ICP=[16,11,26,31,17], SP=['LP1'], UZSTOP=\{16:1.4\}, NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r2 = r(r1('UZ1'), ICP=[19,11,26,31,18], SP=['LP1'], UZSTOP=\{19:0.3\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r3 = r(r2('UZ1'), ICP=[11,26,31,13,18], SP=['LP1'], UZSTOP=\{17:0.23\}, NPR=10, DS='-')\cf3 \cb0 \
+\cf6 \cb7 r4 = r(r3('LP1'), ICP=[17,11,26,31,18], SP=['LP1'], UZSTOP=\{17:0.86\}, NPR=1,DS='-')\
+shell('mkdir A14_Y03')\
+r4=rl(r4)\
+save(r4,'r4')\
+shell('autox to_matlab.py r4 ./A14_Y03/A14_Y03')\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \cb1 \
+A subsection with start points in the \cb5 a=1.4, y=0.25\cb1  plane.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf6 \cb7 r0 = r(e='star', c='star', ICP=[11,26,31,17,18], UZSTOP=\{17:0.4\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r1 = r(r0('UZ1'), ICP=[16,11,26,31,17], SP=['LP1'], UZSTOP=\{16:1.4\}, NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r2 = r(r1('UZ1'), ICP=[19,11,26,31,18], SP=['LP1'], UZSTOP=\{19:0.25\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r3 = r(r2('UZ1'), ICP=[11,26,31,13,18], SP=['LP1'], UZSTOP=\{17:0.23\}, NPR=10, DS='-')\cf3 \cb0 \
+\cf6 \cb7 r4 = r(r3('LP1'), ICP=[17,11,26,31,18], SP=['LP1'], UZSTOP=\{17:0.86\}, NPR=1,DS='-')\
+shell('mkdir A14_Y025')\
+r4=rl(r4)\
+save(r4,'r4')\
+shell('autox to_matlab.py r4 ./A14_Y025/A14_Y025')\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \cb1 \
+A subsection with start points in the \cb5 a=1.4, y=0.2\cb1  plane.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf6 \cb7 r0 = r(e='star', c='star', ICP=[11,26,31,17,18], UZSTOP=\{17:0.4\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r1 = r(r0('UZ1'), ICP=[16,11,26,31,17], SP=['LP1'], UZSTOP=\{16:1.4\}, NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r2 = r(r1('UZ1'), ICP=[19,11,26,31,18], SP=['LP1'], UZSTOP=\{19:0.2\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r3 = r(r2('UZ1'), ICP=[11,26,31,13,18], SP=['LP1'], UZSTOP=\{17:0.23\}, NPR=10, DS='-')\cf3 \cb0 \
+\cf6 \cb7 r4 = r(r3('LP1'), ICP=[17,11,26,31,18], SP=['LP1'], UZSTOP=\{17:0.86\}, NPR=1,DS='-')\
+shell('mkdir A14_Y02')\
+r4=rl(r4)\
+save(r4,'r4')\
+shell('autox to_matlab.py r4 ./A14_Y02/A14_Y02')\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \cb1 A subsection with start points in the \cb5 a=1.4, y=0.15\cb1  plane.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf6 \cb7 r0 = r(e='star', c='star', ICP=[11,26,31,17,18], UZSTOP=\{17:0.4\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r1 = r(r0('UZ1'), ICP=[16,11,26,31,17], SP=['LP1'], UZSTOP=\{16:1.4\}, NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r2 = r(r1('UZ1'), ICP=[19,11,26,31,18], SP=['LP1'], UZSTOP=\{19:0.15\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r3 = r(r2('UZ1'), ICP=[11,26,31,13,18], SP=['LP1'], UZSTOP=\{17:0.23\}, NPR=10, DS='-')\cf3 \cb0 \
+\cf6 \cb7 r4 = r(r3('LP1'), ICP=[17,11,26,31,18], SP=['LP1'], UZSTOP=\{17:0.86\}, NPR=1,DS='-')\
+shell('mkdir A14_Y015')\
+r4=rl(r4)\
+save(r4,'r4')\
+shell('autox to_matlab.py r4 ./A14_Y015/A14_Y015')\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \cb1 A subsection with start points in the \cb5 a=1.4, y=0.1\cb1  plane.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf6 \cb7 r0 = r(e='star', c='star', ICP=[11,26,31,17,18], UZSTOP=\{17:0.4\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r1 = r(r0('UZ1'), ICP=[16,11,26,31,17], SP=['LP1'], UZSTOP=\{16:1.4\}, NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r2 = r(r1('UZ1'), ICP=[19,11,26,31,18], SP=['LP1'], UZSTOP=\{19:0.1\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r3 = r(r2('UZ1'), ICP=[11,26,31,13,18], SP=['LP1'], UZSTOP=\{17:0.23\}, NPR=10, DS='-')\cf3 \cb0 \
+\cf6 \cb7 r4 = r(r3('LP1'), ICP=[17,11,26,31,18], SP=['LP1'], UZSTOP=\{17:0.86\}, NPR=1,DS='-')\
+shell('mkdir A14_Y01')\
+r4=rl(r4)\
+save(r4,'r4')\
+shell('autox to_matlab.py r4 ./A14_Y01/A14_Y01')\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \cb1 A subsection with start points in the \cb5 a=1.4, y=0.0\cb1  plane.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf6 \cb7 r0 = r(e='star', c='star', ICP=[11,26,31,17,18], UZSTOP=\{17:0.4\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r1 = r(r0('UZ1'), ICP=[16,11,26,31,17], SP=['LP1'], UZSTOP=\{16:1.4\}, NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r2 = r(r1('UZ1'), ICP=[19,11,26,31,18], SP=['LP1'], UZSTOP=\{19:0.0\}, NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r3 = r(r2('UZ1'), ICP=[11,26,31,13,18], SP=['LP1'], UZSTOP=\{17:0.23\}, NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r4 = r(r3('LP1'), ICP=[17,11,26,31,18], SP=['LP1'], UZSTOP=\{17:0.86\}, NPR=1)\
+shell('mkdir A14_Y0')\
+r4=rl(r4)\
+save(r4,'r4')\
+shell('autox to_matlab.py r4 ./A14_Y0/A14_Y0')\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \cb1 A subsection with start points in the \cb5 a=1.4, y=-0.2\cb1  plane.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf6 \cb7 r0 = r(e='star', c='star', ICP=[11,26,31,17,18], UZSTOP=\{17:0.4\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r1 = r(r0('UZ1'), ICP=[16,11,26,31,17], SP=['LP1'], UZSTOP=\{16:1.4\}, NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r2 = r(r1('UZ1'), ICP=[19,11,26,31,18], SP=['LP1'], UZSTOP=\{19:-0.2\}, NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r3 = r(r2('UZ1'), ICP=[11,26,31,13,18], SP=['LP1'], UZSTOP=\{17:0.23\}, NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r4 = r(r3('LP1'), ICP=[17,11,26,31,18], SP=['LP1'], UZSTOP=\{17:0.86\}, NPR=1, DS='-')\
+shell('mkdir A14_Yn02')\
+r4=rl(r4)\
+save(r4,'r4')\
+shell('autox to_matlab.py r4 ./A14_Yn02/A14_Yn02')\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \cb1 A subsection with start points in the \cb5 a=1.4, y=-0.15\cb1  plane.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf6 \cb7 r0 = r(e='star', c='star', ICP=[11,26,31,17,18], UZSTOP=\{17:0.4\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r1 = r(r0('UZ1'), ICP=[16,11,26,31,17], SP=['LP1'], UZSTOP=\{16:1.4\}, NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r2 = r(r1('UZ1'), ICP=[19,11,26,31,18], SP=['LP1'], UZSTOP=\{19:-0.15\}, NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r3 = r(r2('UZ1'), ICP=[11,26,31,13,18], SP=['LP1'], UZSTOP=\{17:0.23\}, NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r4 = r(r3('LP1'), ICP=[17,11,26,31,18], SP=['LP1'], UZSTOP=\{17:0.86\}, NPR=1, DS='-')\
+shell('mkdir A14_Yn015')\
+r4=rl(r4)\
+save(r4,'r4')\
+shell('autox to_matlab.py r4 ./A14_Yn015/A14_Yn015')\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \cb1 A subsection with start points in the \cb5 a=1.4, y=-0.1\cb1  plane.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf6 \cb7 r0 = r(e='star', c='star', ICP=[11,26,31,17,18], UZSTOP=\{17:0.4\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r1 = r(r0('UZ1'), ICP=[16,11,26,31,17], SP=['LP1'], UZSTOP=\{16:1.4\}, NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r2 = r(r1('UZ1'), ICP=[19,11,26,31,18], SP=['LP1'], UZSTOP=\{19:-0.1\}, NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r3 = r(r2('UZ1'), ICP=[11,26,31,13,18], SP=['LP1'], UZSTOP=\{17:0.23\}, NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r4 = r(r3('LP1'), ICP=[17,11,26,31,18], SP=['LP1'], UZSTOP=\{17:0.86\}, NPR=1, DS='-')\
+shell('mkdir A14_Yn01')\
+r4=rl(r4)\
+save(r4,'r4')\
+shell('autox to_matlab.py r4 ./A14_Yn01/A14_Yn01')\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \cb1 A subsection with start points in the \cb5 a=5, y=0.1\cb1  plane.\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf6 \cb7 r0 = r(e='star', c='star', ICP=[11,26,31,17,18], UZSTOP=\{17:0.4\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r1 = r(r0('UZ1'), ICP=[16,11,26,31,17], SP=['LP1'], UZSTOP=\{16:5\}, NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r2 = r(r1('UZ1'), ICP=[19,11,26,31,18], SP=['LP1'], UZSTOP=\{19:0.1\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r3 = r(r2('UZ1'), ICP=[11,26,31,13,18], SP=['LP1'], UZSTOP=\{17:0.23\}, NPR=10, DS='-')\cf3 \cb0 \
+\cf6 \cb7 r4 = r(r3('LP1'), ICP=[17,11,26,31,18], SP=['LP1'], UZSTOP=\{17:0.86\}, NPR=1,DS='-')\
+shell('mkdir A5_Y01')\
+r4=rl(r4)\
+save(r4,'r4')\
+shell('autox to_matlab.py r4 ./A5_Y01/A14_Y01')\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \cb1 A subsection with start points in the \cb5 a=5, y=0.09\cb1  plane.\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf6 \cb7 \
+r0 = r(e='star', c='star', ICP=[11,26,31,17,18], UZSTOP=\{17:0.4\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r1 = r(r0('UZ1'), ICP=[16,11,26,31,17], SP=['LP1'], UZSTOP=\{16:5\}, NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r2 = r(r1('UZ1'), ICP=[19,11,26,31,18], SP=['LP1'], UZSTOP=\{19:0.09\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r3 = r(r2('UZ1'), ICP=[11,26,31,13,18], SP=['LP1'], UZSTOP=\{17:0.23\}, NPR=10, DS='-')\cf3 \cb0 \
+\cf6 \cb7 r4 = r(r3('LP1'), ICP=[17,11,26,31,18], SP=['LP1'], UZSTOP=\{17:0.86\}, NPR=1,DS='-')\
+shell('mkdir A5_Y009')\
+r4=rl(r4)\
+save(r4,'r4')\
+shell('autox to_matlab.py r4 ./A5_Y009/A14_Y009')\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \cb1 A subsection with start points in the \cb5 a=5, y=0.08\cb1  plane.\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf6 \cb7 \
+r0 = r(e='star', c='star', ICP=[11,26,31,17,18], UZSTOP=\{17:0.4\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r1 = r(r0('UZ1'), ICP=[16,11,26,31,17], SP=['LP1'], UZSTOP=\{16:5\}, NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r2 = r(r1('UZ1'), ICP=[19,11,26,31,18], SP=['LP1'], UZSTOP=\{19:0.08\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r3 = r(r2('UZ1'), ICP=[11,26,31,13,18], SP=['LP1'], UZSTOP=\{17:0.23\}, NPR=10, DS='-')\cf3 \cb0 \
+\cf6 \cb7 r4 = r(r3('LP1'), ICP=[17,11,26,31,18], SP=['LP1'], UZSTOP=\{17:0.86\}, NPR=1,DS='-')\
+shell('mkdir A5_Y008')\
+r4=rl(r4)\
+save(r4,'r4')\
+shell('autox to_matlab.py r4 ./A5_Y008/A14_Y008')\
+\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \cb1 A subsection with start points in the \cb5 a=5, y=0.07\cb1  plane.\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf6 \cb7 \
+r0 = r(e='star', c='star', ICP=[11,26,31,17,18], UZSTOP=\{17:0.4\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r1 = r(r0('UZ1'), ICP=[16,11,26,31,17], SP=['LP1'], UZSTOP=\{16:5\}, NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r2 = r(r1('UZ1'), ICP=[19,11,26,31,18], SP=['LP1'], UZSTOP=\{19:0.07\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r3 = r(r2('UZ1'), ICP=[11,26,31,13,18], SP=['LP1'], UZSTOP=\{17:0.23\}, NPR=10, DS='-')\cf3 \cb0 \
+\cf6 \cb7 r4 = r(r3('LP1'), ICP=[17,11,26,31,18], SP=['LP1'], UZSTOP=\{17:0.86\}, NPR=1,DS='-')\
+shell('mkdir A5_Y007')\
+r4=rl(r4)\
+save(r4,'r4')\
+shell('autox to_matlab.py r4 ./A5_Y007/A14_Y007')\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \cb1 A subsection with start points in the \cb5 a=5, y=0.06\cb1  plane.\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf6 \cb7 \
+r0 = r(e='star', c='star', ICP=[11,26,31,17,18], UZSTOP=\{17:0.4\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r1 = r(r0('UZ1'), ICP=[16,11,26,31,17], SP=['LP1'], UZSTOP=\{16:5\}, NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r2 = r(r1('UZ1'), ICP=[19,11,26,31,18], SP=['LP1'], UZSTOP=\{19:0.06\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r3 = r(r2('UZ1'), ICP=[11,26,31,13,18], SP=['LP1'], UZSTOP=\{17:0.23\}, NPR=10, DS='-')\cf3 \cb0 \
+\cf6 \cb7 r4 = r(r3('LP1'), ICP=[17,11,26,31,18], SP=['LP1'], UZSTOP=\{17:0.86\}, NPR=1,DS='-')\
+shell('mkdir A5_Y006')\
+r4=rl(r4)\
+save(r4,'r4')\
+shell('autox to_matlab.py r4 ./A5_Y006/A14_Y006')\
+\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \cb1 A subsection with start points in the \cb5 a=5, y=0.05\cb1  plane.\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf6 \cb7 \
+r0 = r(e='star', c='star', ICP=[11,26,31,17,18], UZSTOP=\{17:0.4\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r1 = r(r0('UZ1'), ICP=[16,11,26,31,17], SP=['LP1'], UZSTOP=\{16:5\}, NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r2 = r(r1('UZ1'), ICP=[19,11,26,31,18], SP=['LP1'], UZSTOP=\{19:0.05\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r3 = r(r2('UZ1'), ICP=[11,26,31,13,18], SP=['LP1'], UZSTOP=\{17:0.23\}, NPR=10, DS='-')\cf3 \cb0 \
+\cf6 \cb7 r4 = r(r3('LP1'), ICP=[17,11,26,31,18], SP=['LP1'], UZSTOP=\{17:0.86\}, NPR=1,DS='-')\
+shell('mkdir A5_Y005')\
+r4=rl(r4)\
+save(r4,'r4')\
+shell('autox to_matlab.py r4 ./A5_Y005/A14_Y005')\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \cb1 A subsection with start points in the \cb5 a=5, y=0.04\cb1  plane.\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf6 \cb7 \
+r0 = r(e='star', c='star', ICP=[11,26,31,17,18], UZSTOP=\{17:0.4\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r1 = r(r0('UZ1'), ICP=[16,11,26,31,17], SP=['LP1'], UZSTOP=\{16:5\}, NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r2 = r(r1('UZ1'), ICP=[19,11,26,31,18], SP=['LP1'], UZSTOP=\{19:0.04\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r3 = r(r2('UZ1'), ICP=[11,26,31,13,18], SP=['LP1'], UZSTOP=\{17:0.23\}, NPR=10, DS='-')\cf3 \cb0 \
+\cf6 \cb7 r4 = r(r3('LP1'), ICP=[17,11,26,31,18], SP=['LP1'], UZSTOP=\{17:0.86\}, NPR=1,DS='-')\
+shell('mkdir A5_Y004')\
+r4=rl(r4)\
+save(r4,'r4')\
+shell('autox to_matlab.py r4 ./A5_Y004/A14_Y004')\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \cb1 A subsection with start points in the \cb5 a=5, y=0.03\cb1  plane.\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf6 \cb7 \
+r0 = r(e='star', c='star', ICP=[11,26,31,17,18], UZSTOP=\{17:0.4\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r1 = r(r0('UZ1'), ICP=[16,11,26,31,17], SP=['LP1'], UZSTOP=\{16:5\}, NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r2 = r(r1('UZ1'), ICP=[19,11,26,31,18], SP=['LP1'], UZSTOP=\{19:0.03\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r3 = r(r2('UZ1'), ICP=[11,26,31,13,18], SP=['LP1'], UZSTOP=\{17:0.23\}, NPR=10, DS='-')\cf3 \cb0 \
+\cf6 \cb7 r4 = r(r3('LP1'), ICP=[17,11,26,31,18], SP=['LP1'], UZSTOP=\{17:0.86\}, NPR=1,DS='-')\
+shell('mkdir A5_Y003')\
+r4=rl(r4)\
+save(r4,'r4')\
+shell('autox to_matlab.py r4 ./A5_Y003/A14_Y003')\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \cb1 A subsection with start points in the \cb5 a=5, y=0.02\cb1  plane.\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf6 \cb7 \
+r0 = r(e='star', c='star', ICP=[11,26,31,17,18], UZSTOP=\{17:0.4\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r1 = r(r0('UZ1'), ICP=[16,11,26,31,17], SP=['LP1'], UZSTOP=\{16:5\}, NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r2 = r(r1('UZ1'), ICP=[19,11,26,31,18], SP=['LP1'], UZSTOP=\{19:0.02\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r3 = r(r2('UZ1'), ICP=[11,26,31,13,18], SP=['LP1'], UZSTOP=\{17:0.23\}, NPR=10, DS='-')\cf3 \cb0 \
+\cf6 \cb7 r4 = r(r3('LP1'), ICP=[17,11,26,31,18], SP=['LP1'], UZSTOP=\{17:0.86\}, NPR=1,DS='-')\
+shell('mkdir A5_Y002')\
+r4=rl(r4)\
+save(r4,'r4')\
+shell('autox to_matlab.py r4 ./A5_Y002/A14_Y002')\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \cb1 A subsection with start points in the \cb5 a=5, y=0.01\cb1  plane.\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf6 \cb7 \
+r0 = r(e='star', c='star', ICP=[11,26,31,17,18], UZSTOP=\{17:0.4\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r1 = r(r0('UZ1'), ICP=[16,11,26,31,17], SP=['LP1'], UZSTOP=\{16:5\}, NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r2 = r(r1('UZ1'), ICP=[19,11,26,31,18], SP=['LP1'], UZSTOP=\{19:0.01\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r3 = r(r2('UZ1'), ICP=[11,26,31,13,18], SP=['LP1'], UZSTOP=\{17:0.23\}, NPR=10, DS='-')\cf3 \cb0 \
+\cf6 \cb7 r4 = r(r3('LP1'), ICP=[17,11,26,31,18], SP=['LP1'], UZSTOP=\{17:0.86\}, NPR=1,DS='-')\
+shell('mkdir A5_Y001')\
+r4=rl(r4)\
+save(r4,'r4')\
+shell('autox to_matlab.py r4 ./A5_Y001/A14_Y001')\
 \
 }
