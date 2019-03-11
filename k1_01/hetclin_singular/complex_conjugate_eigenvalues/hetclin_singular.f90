@@ -85,8 +85,8 @@
 	  
 	  !BOTTOM ORBIT STUFF
 	  PAR(56:61)= (/ 0.940272, 1.492271, 1.342954, 0.940272, 1.492271, 1.342954 /) !PAR(56:59), PAR(60:63) startpoint and endpoint for bottom orbit
-	  PAR(64:66)= (/ - 0.0537135361608340861758282121244, 0.47335191629441716850755227165349, 0.87214305967004426414910112371712 /) !real part of unstable complex conjugate eigenvectors of saddle equilibrium at B=0.7
-	  PAR(67:69)= (/ -0.099631805485786386764404684114047, -0.049928009959519587263507064053846, 0.0 /) !imaginary part of unstable complex conjugate eigenvectors of stable equilibrium at B=0.7
+	  PAR(64:66)= (/ -0.054050217776115289320488535759256, 0.4763189316720169606389795860542, 0.87760973632314662734164247979943 /) !real part of unstable complex conjugate eigenvectors of saddle equilibrium at B=0.7
+	  PAR(67:69)= (/ -0.10025630723342586500234530383242, -0.05024096353216491545041674407021, 0.0 /) !imaginary part of unstable complex conjugate eigenvectors of stable equilibrium at B=0.7
 	  PAR(70:71)= (/ 0.0, 0.0 /) !real and imaginary radius
 	  PAR(103:105)= (/ 0.940272, 1.492271, 1.342954 /) !point on critical manifold corresponding to bottom endpoint B-coordinate
 	  PAR(106:107)= (/ 1.3753860940993691676233022299789, -4.4640865481402179732661936757437 /) !real (PAR(106)) and imaginary (PAR(107)) parts of eigenvalues
@@ -225,20 +225,18 @@
 	  
 	  CALL JACOB(D,PAR,(/ PAR(56:58) /),K)
 	  
-	  FB(29)= SQRT(PAR(64)**2 + PAR(67)**2 + PAR(65)**2 + PAR(68)**2 + PAR(66)**2 + PAR(69)**2) - 1.0
+	  FB(29)= SQRT(PAR(64)**2 + PAR(65)**2 + PAR(66)**2) - 1.0
 	  
 	  FB(30:32)= MATMUL(K, PAR(64:66)) - (PAR(106)*PAR(64:66)-PAR(107)*PAR(67:69))
 	  FB(33:35)= MATMUL(K, PAR(67:69)) - (PAR(107)*PAR(64:66)+PAR(106)*PAR(67:69))
 	  
-	  FB(36)= SQRT(PAR(64)**2 + PAR(65)**2 + PAR(66)**2) - 0.99377094803436699104907010676142
-	  
-	  IF(NBC==36) RETURN	  
+	  IF(NBC==35) RETURN	  
 	  !making sure the orthogonal vector is unit
-	  FB(37)= DOT_PRODUCT(PAR(76:77), PAR(76:77))-1.0
+	  FB(36)= DOT_PRODUCT(PAR(76:77), PAR(76:77))-1.0
 	  
 	  !Lin vector
-	  FB(38)= (U1(2)-U1(5))/SQRT((U1(2)-U1(5))**2+(U1(3)-U1(6))**2)-PAR(74)
-	  FB(39)= (U1(3)-U1(6))/SQRT((U1(2)-U1(5))**2+(U1(3)-U1(6))**2)-PAR(75)
+	  FB(37)= (U1(2)-U1(5))/SQRT((U1(2)-U1(5))**2+(U1(3)-U1(6))**2)-PAR(74)
+	  FB(38)= (U1(3)-U1(6))/SQRT((U1(2)-U1(5))**2+(U1(3)-U1(6))**2)-PAR(75)
 	  
       END SUBROUTINE BCND
 
