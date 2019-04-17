@@ -158,17 +158,17 @@
 	  !distance between endpoints to be closed in last step
 	  FB(19)= DOT_PRODUCT(PAR(73:75), (/ (U1(2)-U1(6)), (U1(3)-U1(7)), (U1(4)-U1(8)) /)) - PAR(100)
 	 
-	  IF(NBC==19) RETURN	  
+	  FB(20)= (PAR(60)-PAR(44)) - PAR(102)	
+	 
+	  IF(NBC==20) RETURN	  
 	  
-	  FB(20)= DOT_PRODUCT(PAR(77:79), PAR(77:79))-1.0
-	  FB(21)= DOT_PRODUCT(PAR(80:82), PAR(80:82))-1.0
+	  FB(21)= DOT_PRODUCT(PAR(77:79), PAR(77:79))-1.0
+	  FB(22)= DOT_PRODUCT(PAR(80:82), PAR(80:82))-1.0
 	  
 	  !Lin vector
-	  FB(22)= (U1(2)-U1(6))/SQRT((U1(2)-U1(6))**2+(U1(3)-U1(7))**2+(U1(4)-U1(8))**2)-PAR(73)
-	  FB(23)= (U1(3)-U1(7))/SQRT((U1(2)-U1(6))**2+(U1(3)-U1(7))**2+(U1(4)-U1(8))**2)-PAR(74)
-	  FB(24)= (U1(4)-U1(8))/SQRT((U1(2)-U1(6))**2+(U1(3)-U1(7))**2+(U1(4)-U1(8))**2)-PAR(75)
-	  
-	  IF(NBC==24) RETURN
+	  FB(23)= (U1(2)-U1(6))/SQRT((U1(2)-U1(6))**2+(U1(3)-U1(7))**2+(U1(4)-U1(8))**2)-PAR(73)
+	  FB(24)= (U1(3)-U1(7))/SQRT((U1(2)-U1(6))**2+(U1(3)-U1(7))**2+(U1(4)-U1(8))**2)-PAR(74)
+	  FB(25)= (U1(4)-U1(8))/SQRT((U1(2)-U1(6))**2+(U1(3)-U1(7))**2+(U1(4)-U1(8))**2)-PAR(75)
 	  
 	  a=par(103)
 	  b=par(61)
@@ -193,15 +193,10 @@
 	  zeta= k4/(sqrt(2*k2*k8))
 	  delta= k6/k8
 	  
-      FB(25)= (mu - alpha*a - a*b*y) 
-      FB(26)= (b*x-x**2 + 3*a*b*y - zeta*x + delta)/(epsilon_sq)
-      FB(27)= kappa*(x**2 - y - a*b*y)/(epsilon_sq)
-	  FB(28)= SQRT((PAR(60)-PAR(103))**2 + (PAR(62)-PAR(104))**2 + (PAR(63)-PAR(105))**2) - PAR(106)
-	  
-	  IF(NBC==28) RETURN
-	  
-	  !difference in A coordinates
-	  FB(29)= (PAR(60)-PAR(44)) - PAR(102)	  
+      FB(26)= (mu - alpha*a - a*b*y) 
+      FB(27)= (b*x-x**2 + 3*a*b*y - zeta*x + delta)/(epsilon_sq)
+      FB(28)= kappa*(x**2 - y - a*b*y)/(epsilon_sq)
+	  FB(29)= SQRT((PAR(60)-PAR(103))**2 + (PAR(62)-PAR(104))**2 + (PAR(63)-PAR(105))**2) - PAR(106)
 	  
       END SUBROUTINE BCND
 

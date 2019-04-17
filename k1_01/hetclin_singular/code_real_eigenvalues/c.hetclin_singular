@@ -1,11 +1,11 @@
 unames = {1:'a_top', 2:'x_top', 3:'y_top', 4:'a_bottom', 5:'x_bottom', 6:'y_bottom'}
 parnames = {}
 NDIM = 6
-NBC = 38
+NBC = 39
 NINT = 0
 NPAR = 200
 JAC = 0
-NTST = 105
+NTST = 200
 NCOL = 4
 IAD = 3
 EPSL = 1e-7 

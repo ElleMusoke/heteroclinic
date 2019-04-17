@@ -90,7 +90,7 @@
 	  PAR(70:71)= (/ 0.0, 0.0 /) !real and imaginary radius
 	  PAR(103:105)= (/ 0.940272, 1.492271, 1.342954 /) !point on critical manifold corresponding to bottom endpoint B-coordinate
 	  PAR(106:107)= (/ 1.3753860940993691676233022299789, -4.4640865481402179732661936757437 /) !real (PAR(106)) and imaginary (PAR(107)) parts of eigenvalues
-	  PAR(83)=0.0001
+	  PAR(83)=0.116521
 	  
       rad2=PAR(83)
       theta2=2*pi*PAR(84)
@@ -230,13 +230,18 @@
 	  FB(30:32)= MATMUL(K, PAR(64:66)) - (PAR(106)*PAR(64:66)-PAR(107)*PAR(67:69))
 	  FB(33:35)= MATMUL(K, PAR(67:69)) - (PAR(107)*PAR(64:66)+PAR(106)*PAR(67:69))
 	  
-	  IF(NBC==35) RETURN	  
+	  !radius
+	  FB(36)= (0.0001 + (0.2 - 0.0001)*((PAR(10) - 0.47685750164)/(0.86 - 0.47685750164))) - PAR(83)
+	  
+	  IF(NBC==36) RETURN	  
 	  !making sure the orthogonal vector is unit
-	  FB(36)= DOT_PRODUCT(PAR(76:77), PAR(76:77))-1.0
+	  FB(37)= DOT_PRODUCT(PAR(76:77), PAR(76:77))-1.0
 	  
 	  !Lin vector
-	  FB(37)= (U1(2)-U1(5))/SQRT((U1(2)-U1(5))**2+(U1(3)-U1(6))**2)-PAR(74)
-	  FB(38)= (U1(3)-U1(6))/SQRT((U1(2)-U1(5))**2+(U1(3)-U1(6))**2)-PAR(75)
+	  FB(38)= (U1(2)-U1(5))/SQRT((U1(2)-U1(5))**2+(U1(3)-U1(6))**2)-PAR(74)
+	  FB(39)= (U1(3)-U1(6))/SQRT((U1(2)-U1(5))**2+(U1(3)-U1(6))**2)-PAR(75)
+	  
+	  
 	  
       END SUBROUTINE BCND
 
