@@ -4,7 +4,7 @@
 \red255\green249\blue89;\red47\green255\blue18;\red0\green0\blue0;}
 {\*\expandedcolortbl;;\csgenericrgb\c27843\c80000\c98824;\csgenericrgb\c18431\c100000\c7059;\csgenericrgb\c100000\c100000\c20000;
 \csgenericrgb\c100000\c97647\c34902;\cssrgb\c15686\c99608\c7843;\csgray\c0\c90000;}
-\paperw11900\paperh16840\margl1440\margr1440\vieww29680\viewh11220\viewkind0
+\paperw11900\paperh16840\margl1440\margr1440\vieww29680\viewh19680\viewkind0
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
 
 \f0\fs32 \cf0 \cb2 \CocoaLigature0 First Piece (Different startpoint values for A and Y)\cb1 \
@@ -557,4 +557,12 @@ r4=rl(r4)\
 save(r4,'r4')\
 shell('autox to_matlab.py r4 ./A5_Y001/A14_Y001')\
 \
-}
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \cb1 A subsection with start points in the \cb5 a=5, y=0.5\cb1  plane.\cf6 \cb7 \
+r0 = r(e='star', c='star', ICP=[11,26,31,17,18], UZSTOP=\{17:0.4\}, DS='-', NPR=10)\cf3 \cb0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf6 \cb7 r1 = r(r0('UZ1'), ICP=[16,11,26,31,17], SP=['LP1'], UZSTOP=\{16:6.0\}, NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r2 = r(r1('UZ1'), ICP=[19,11,26,31,18], SP=['LP1'], UZSTOP=\{19:0.5\}, DS='-', NPR=10)\cf3 \cb0 \
+\cf6 \cb7 r3 = r(r2('UZ1'), ICP=[11,26,31,13,18], SP=['LP1'], UZSTOP=\{17:0.23\}, NPR=10, DS='-')\cf3 \cb0 \
+\cf6 \cb7 r4 = r(r3('LP1'), ICP=[17,11,26,31,18], SP=['LP1'], UZSTOP=\{17:0.86\}, NPR=10,DS='-')}
